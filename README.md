@@ -1,1 +1,1100 @@
-# incontrolauto.github.io
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>佰印自動化科技有限公司</title>
+
+<meta name="description" content="佰印自動化科技有限公司提供自動化電控工程、PLC程式設計、HMI人機介面、機械設備開發、系統整合與產線升級服務。">
+<meta name="keywords" content="自動化,PLC,HMI,電控工程,機械設備,系統整合,產線改善">
+<meta property="og:title" content="佰印自動化科技有限公司">
+<meta property="og:description" content="電控工程 × 機械設備 × 系統整合">
+<meta property="og:type" content="website">
+<meta name="robots" content="index,follow">
+<link rel="icon" href="images/favicon.ico">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Barlow:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --green: #00c820;
+    --green-dark: #009918;
+    --green-light: #e6fff0;
+    --black: #111111;
+    --gray-1: #222222;
+    --gray-2: #444444;
+    --gray-3: #888888;
+    --gray-4: #cccccc;
+    --gray-5: #f5f5f5;
+    --white: #ffffff;
+    --font-tc: 'Noto Sans TC', sans-serif;
+    --font-en: 'Barlow', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-tc);
+    color: var(--black);
+    background: var(--white);
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e8e8e8;
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    display: flex; align-items: center;
+    text-decoration: none;
+  }
+  .nav-logo img { height: 42px; width: auto; }
+  .nav-logo-text {
+    display: flex; flex-direction: column;
+  }
+  .nav-logo-text .tc {
+    font-size: 17px; font-weight: 700; color: var(--black); letter-spacing: 1px;
+  }
+  .nav-logo-text .en {
+    font-family: var(--font-en); font-size: 10px; font-weight: 400;
+    color: var(--gray-3); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--gray-2);
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-contact {
+    background: var(--green); color: var(--white);
+    padding: 9px 22px; border-radius: 4px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-contact:hover { background: var(--green-dark); }
+
+  /* HERO */
+  .hero {
+    padding-top: 68px;
+    min-height: 100vh;
+    display: flex; align-items: flex-start;
+    background: var(--white);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -5%; top: 10%; bottom: 10%;
+    width: 45%;
+    background: var(--green-light);
+    border-radius: 40px 0 0 40px;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 100px 5vw 80px;
+    max-width: 1200px; width: 100%;
+    margin: 0 auto;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--green-light); color: #111111;
+    font-size: 26px; font-weight: 700; letter-spacing: 0.5px;
+    padding: 12px 32px; border-radius: 100px; margin-bottom: 36px;
+    border: 1.5px solid rgba(0,200,32,0.4);
+  }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 62px);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero-h1 {
+    font-size: clamp(24px, 6vw, 64px);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 24px; color: var(--black);
+    max-width: 100%;
+  }
+  .hero-h1 span { color: #001f05; white-space: nowrap; }
+  .hero-main-title {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 700; line-height: 1.15;
+    margin-bottom: 28px; color: var(--black);
+    max-width: 700px;
+  }
+  .hero-services {
+    margin-top: 64px;
+    background: transparent;
+  }
+  .hero-services .service-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(4px);
+  }
+  .hero-tagline {
+    font-size: 28px; font-weight: 700; color: #003d10;
+    letter-spacing: 1.5px; margin-bottom: 20px;
+  }
+  .hero-sub {
+    font-size: 17px; color: var(--gray-2); line-height: 1.8;
+    max-width: 520px; margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green); color: var(--white);
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1.5px solid var(--gray-4); color: var(--gray-2);
+    padding: 14px 32px; border-radius: 4px;
+    font-size: 15px; font-weight: 500; text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+  .hero-stats {
+    margin-top: 64px; display: flex; gap: 48px; flex-wrap: wrap;
+  }
+  .hero-stat-num {
+    font-family: var(--font-en); font-size: 36px; font-weight: 600; color: var(--green);
+  }
+  .hero-stat-label { font-size: 13px; color: var(--gray-3); margin-top: 2px; }
+
+  /* SECTION COMMON */
+  section { padding: 96px 5vw; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    font-family: var(--font-en); font-size: 11px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--green);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 3.5vw, 42px); font-weight: 700;
+    line-height: 1.25; margin-bottom: 16px;
+  }
+  .section-subtitle {
+    font-size: 16px; color: var(--gray-2); line-height: 1.8;
+    max-width: 560px; font-weight: 300;
+  }
+
+  /* SERVICES */
+  #services { background: var(--gray-5); }
+  .services-grid {
+    margin-top: 56px;
+    display: grid; grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 760px;
+  }
+  .service-card {
+    background: var(--white); border-radius: 10px;
+    padding: 28px 32px;
+    border: 1px solid #e8e8e8;
+    transition: box-shadow 0.2s, transform 0.15s;
+    position: relative; overflow: hidden;
+    display: flex; align-items: flex-start; gap: 24px;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--green);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-num { display: none; }
+  .service-icon {
+    width: 72px; height: 72px; flex-shrink: 0;
+    background: var(--green-light); border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-icon svg { width: 36px; height: 36px; stroke: var(--green); fill: none; stroke-width: 1.8; }
+  .service-body { flex: 1; }
+  .service-title {
+    font-size: 24px; font-weight: 700; margin-bottom: 8px; color: var(--black);
+  }
+  .service-desc {
+    font-size: 14px; color: var(--gray-2); line-height: 1.8; font-weight: 300;
+  }
+
+  /* VIDEOS */
+  #videos { background: var(--gray-5); }
+  /* 分類篩選：色塊按鈕帶彩色圓點 */
+  .video-tabs {
+    display: flex; gap: 8px; margin: 40px 0 32px; flex-wrap: wrap;
+  }
+  .video-tab {
+    padding: 11px 22px; border-radius: 8px; font-size: 15px; font-weight: 500;
+    border: 1.5px solid #e0e0e0; color: var(--gray-2);
+    cursor: pointer; transition: all 0.2s; background: var(--white);
+    display: flex; align-items: center; gap: 9px;
+  }
+  .video-tab .tab-dot {
+    width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0;
+  }
+  .video-tab .tab-count {
+    font-size: 12px; opacity: 0.6; margin-left: 1px;
+  }
+  /* 全部 active */
+  .video-tab[data-tab="all"].active,
+  .video-tab[data-tab="all"]:hover {
+    background: #1a1a1a; color: #fff; border-color: #1a1a1a;
+  }
+  /* 電控工程 active */
+  .video-tab[data-tab="elec"].active,
+  .video-tab[data-tab="elec"]:hover {
+    background: #e6f4ff; color: #0055aa; border-color: #99ccf5;
+  }
+  /* 機械工程 active */
+  .video-tab[data-tab="mech"].active,
+  .video-tab[data-tab="mech"]:hover {
+    background: #fff3e6; color: #aa5500; border-color: #f5d4aa;
+  }
+  /* 系統整合 active */
+  .video-tab[data-tab="sys"].active,
+  .video-tab[data-tab="sys"]:hover {
+    background: #e6fff0; color: #007a1a; border-color: #99e8b8;
+  }
+
+  /* 影片格：兩欄全出血 */
+  .video-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 16px;
+  }
+  .video-item {
+    border-radius: 10px; overflow: hidden;
+    position: relative;
+    aspect-ratio: 16/9;
+    background: #111;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .video-item:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.18); }
+
+  /* 縮圖 */
+  .video-thumb {
+    position: absolute; inset: 0;
+    cursor: pointer; overflow: hidden; background: #000;
+  }
+  .video-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+    transition: transform 0.4s, opacity 0.3s;
+  }
+  .video-item:hover .video-thumb img { transform: scale(1.05); opacity: 0.8; }
+
+  /* 深色漸層遮罩 */
+  .video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.15) 50%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 16px 18px;
+    pointer-events: none;
+  }
+  .video-cat-row {
+    display: flex; align-items: center; gap: 7px; margin-bottom: 5px;
+  }
+  .video-cat-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .video-cat-text {
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .cat-elec { color: #7ec8f7; }
+  .cat-mech { color: #ffbb77; }
+  .cat-sys  { color: #66dd88; }
+  .video-title-text {
+    font-size: 15px; font-weight: 600; color: #fff; line-height: 1.35;
+  }
+
+  /* 播放按鈕 */
+  .video-play-btn {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.75);
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s, border-color 0.2s;
+    pointer-events: none;
+  }
+  .video-item:hover .video-play-btn {
+    background: rgba(255,0,0,0.85);
+    border-color: transparent;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  .video-play-btn svg {
+    width: 20px; height: 20px; fill: #fff;
+    margin-left: 3px;
+  }
+  .video-item iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none; display: block;
+  }
+
+  /* 舊樣式清除 */
+  .video-label { display: none; }
+  .video-color-bar, .video-label-info { display: none; }
+  .video-badge { display: none; }
+  .badge-elec, .badge-mech, .badge-sys {}
+
+  .about-company-name {
+    font-size: 26px; font-weight: 700; color: var(--black);
+    margin-top: 12px; margin-bottom: 12px; letter-spacing: 0.5px;
+  }
+
+  /* ABOUT PANELS */
+  .about-panels {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .about-panel {
+    background: var(--white);
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 32px 36px;
+  }
+  .about-panel-title {
+    font-size: 18px; font-weight: 700; color: var(--black);
+    margin-bottom: 24px; padding-bottom: 14px;
+    border-bottom: 2px solid var(--green);
+    letter-spacing: 0.5px;
+  }
+  .about-panel .about-item { margin-bottom: 20px; }
+  .about-panel .about-item:last-child { margin-bottom: 0; }
+  .about-panel .about-item-value a {
+    color: var(--black); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .about-panel .about-item-value a:hover { color: var(--green); }
+  @media (max-width: 768px) {
+    .about-panels { grid-template-columns: 1fr; }
+  }
+
+  /* ABOUT */
+  #about { background: var(--gray-5); }
+  .about-grid {
+    margin-top: 56px;
+    display: grid; grid-template-columns: 1fr; gap: 0;
+  }
+  .about-item { margin-bottom: 28px; }
+  .about-item-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gray-3); margin-bottom: 6px; font-family: var(--font-en);
+  }
+  .about-item-value {
+    font-size: 16px; font-weight: 500; color: var(--black);
+  }
+  .about-visual {
+    background: var(--black); border-radius: 12px;
+    padding: 48px 40px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 320px;
+    position: relative; overflow: hidden;
+  }
+  .about-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(0,200,32,0.15) 0%, transparent 60%);
+  }
+  .about-visual img { height: 72px; width: auto; position: relative; z-index: 1; }
+  .about-visual-name {
+    margin-top: 24px; font-size: 20px; font-weight: 700; color: var(--white);
+    position: relative; z-index: 1;
+  }
+  .about-visual-en {
+    font-family: var(--font-en); font-size: 11px; color: rgba(255,255,255,0.4);
+    letter-spacing: 2px; text-transform: uppercase; margin-top: 6px;
+    position: relative; z-index: 1;
+  }
+  .about-visual-slogan {
+    margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center; position: relative; z-index: 1;
+    font-size: 13px; color: rgba(255,255,255,0.5); line-height: 2;
+    width: 100%;
+  }
+  .about-visual-slogan span { color: var(--green); }
+
+  /* CONTACT */
+  #contact { background: var(--black); }
+  #contact .section-tag { color: var(--green); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-subtitle { color: rgba(255,255,255,0.5); }
+  .contact-company-name {
+    font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.75);
+    letter-spacing: 1px; margin-bottom: 10px; margin-top: 4px;
+  }
+  .contact-grid {
+    margin-top: 56px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .contact-info-item {
+    display: flex; gap: 16px; margin-bottom: 32px; align-items: flex-start;
+  }
+  .contact-icon {
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: rgba(0,200,32,0.12); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-icon svg { width: 26px; height: 26px; stroke: var(--green); fill: none; stroke-width: 1.8; }
+  .contact-info-label { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; font-family: var(--font-en); margin-bottom: 4px; }
+  .contact-info-val { font-size: 15px; color: rgba(255,255,255,0.85); font-weight: 400; }
+  .contact-form-title { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 24px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group input, .form-group textarea {
+    width: 100%; padding: 12px 16px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; color: var(--white); font-size: 14px; font-family: var(--font-tc);
+    outline: none; transition: border-color 0.2s;
+    resize: vertical;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--green); }
+  .form-group textarea { min-height: 120px; }
+  .btn-submit {
+    width: 100%; padding: 14px;
+    background: var(--green); color: var(--white);
+    border: none; border-radius: 6px; font-size: 15px; font-weight: 500;
+    cursor: pointer; font-family: var(--font-tc);
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { background: var(--green-dark); }
+  .btn-submit:disabled { background: var(--gray-3); cursor: not-allowed; }
+
+  /* Contact section 補充樣式 */
+  .contact-info-val a {
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-info-val a:hover { color: var(--green); }
+
+  .contact-info-block-title {
+    font-size: 18px; font-weight: 700; color: var(--white);
+    margin-bottom: 28px; padding-bottom: 14px;
+    border-bottom: 2px solid var(--green);
+    letter-spacing: 0.5px;
+  }
+
+  .form-label {
+    display: block; font-size: 12px; font-weight: 500;
+    color: rgba(255,255,255,0.5); margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .form-req { color: var(--green); }
+
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+  @media (max-width: 560px) {
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  .form-group select {
+    width: 100%; padding: 12px 16px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; color: var(--white); font-size: 14px; font-family: var(--font-tc);
+    outline: none; transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+  }
+  .form-group select option { background: #222; color: var(--white); }
+  .form-group select:focus { border-color: var(--green); }
+
+  /* 送出成功提示 */
+  .form-success {
+    display: none;
+    align-items: center; gap: 16px;
+    background: rgba(0,200,32,0.12);
+    border: 1px solid rgba(0,200,32,0.3);
+    border-radius: 8px; padding: 20px 24px;
+    color: rgba(255,255,255,0.9); font-size: 15px; line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .form-success.show { display: flex; }
+  .form-success svg {
+    width: 32px; height: 32px; flex-shrink: 0;
+    stroke: var(--green); fill: none; stroke-width: 2;
+  }
+  .form-success strong { color: var(--green); }
+
+  /* FOOTER */
+  footer {
+    background: #0a0a0a; padding: 32px 5vw;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); font-family: var(--font-en); }
+  .footer-id { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    width: 40px; height: 40px; cursor: pointer; gap: 6px;
+    background: none; border: none; padding: 0;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--black); border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e8e8e8;
+    padding: 16px 5vw 24px;
+    flex-direction: column; gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    display: block; padding: 14px 0;
+    font-size: 16px; font-weight: 500; color: var(--gray-2);
+    text-decoration: none; border-bottom: 1px solid #f0f0f0;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--green); }
+  .mobile-menu .mobile-cta {
+    margin-top: 16px; display: inline-block;
+    background: var(--green); color: var(--white) !important;
+    padding: 12px 24px; border-radius: 4px; text-align: center;
+    font-weight: 500; border-bottom: none !important;
+  }
+  .mobile-menu .mobile-cta:hover { background: var(--green-dark); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links, .nav-contact { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero::before { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-stats { gap: 28px; }
+  }
+
+.floating-actions{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:9999}
+.floating-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;font-size:12px;font-weight:700;box-shadow:0 4px 15px rgba(0,0,0,.25)}
+.line-btn{background:#00b900}
+.phone-btn{background:#00c820}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+<svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="212.598px" height="42.52px" viewBox="0 0 212.598 42.52" enable-background="new 0 0 212.598 42.52" xml:space="preserve">
+<text transform="matrix(1 0 0 1 46.6826 35.001)" fill="#808080" font-family="'AgencyFB-Reg'" font-size="10">IN CONTROL AUTOMATION TECHNOLOGY Co.,Ltd.</text>
+<path fill="#008837" d="M21.17,3.819c-9.394,0-17.009,7.615-17.009,17.008c0,9.394,7.615,17.008,17.009,17.008
+	c9.393,0,17.008-7.614,17.008-17.008C38.178,11.435,30.563,3.819,21.17,3.819z M10.965,14.024h3.401v1.7h-1.701h-1.7V14.024z
+	 M31.375,15.725h-1.7v11.906h-6.804V15.725h-3.401v11.906h-6.804V17.426h1.701v8.504h3.401V14.024h6.807V25.93h3.401V14.024h3.398
+	V15.725z"/>
+<text transform="matrix(1 0 0 1 46.6826 20.8271)" font-family="'AdobeFanHeitiStd-Bold-B5pc-H'" font-size="14">佰印自動化科技有限公司</text>
+</svg></a>
+  <ul class="nav-links">
+    <li><a href="#home">服務項目</a></li>
+    <li><a href="#videos">工程實績</a></li>
+    <li><a href="#contact">聯絡我們</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburgerBtn" aria-label="開啟選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" class="mobile-nav-link">服務項目</a>
+  <a href="#videos" class="mobile-nav-link">工程實績</a>
+  <a href="#contact" class="mobile-nav-link">聯絡我們</a>
+  <a href="#contact" class="mobile-cta">填寫詢問表單</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-tag">自動化解決方案</div>
+    <h1 class="hero-h1"><span>電控 × 機械 × 系統</span></h1>
+    <p class="hero-tagline">從規劃 → 設計 → 製作 → 導入&emsp;一站完成</p>
+    <p class="hero-sub">佰印自動化科技提供全方位自動化工程服務<br>從電控規劃、機械設計到系統整合<br>一站式解決您的製造挑戰。</p>
+    <div class="services-grid hero-services">
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+        </div>
+        <div class="service-body">
+          <div class="service-title">自動化電控工程</div>
+          <p class="service-desc">PLC 程式規劃、HMI 人機介面設計、電控盤佈線整合、伺服馬達與變頻器控制，精準掌握每一個控制節點。</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93l-1.41 1.41M5.34 5.34L6.75 6.75M21 12h-2M5 12H3M19.07 19.07l-1.41-1.41M5.34 18.66l1.41-1.41M12 21v-2M12 5V3"/>
+          </svg>
+        </div>
+        <div class="service-body">
+          <div class="service-title">自動化機械設備</div>
+          <p class="service-desc">客製化自動化機台設計與製作、治具開發、機械手臂整合、輸送系統規劃，滿足各類產線需求。</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+          </svg>
+        </div>
+        <div class="service-body">
+          <div class="service-title">系統整合應用</div>
+          <p class="service-desc">跨設備通訊整合、機械手臂控制整合、生產資料擷取分析、既有設備升級改造，讓您的產線智慧連動。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-inner">
+    <div class="section-tag">Portfolio</div>
+    <h2 class="section-title">工程實績</h2>
+    <p class="section-subtitle">真實案例呈現，讓您了解我們的工程能力與施工品質。</p>
+
+    <div class="video-tabs">
+      <button class="video-tab active" data-tab="elec" onclick="filterVideos('elec', this)"><span class="tab-dot" style="background:#0066cc"></span>電控工程<span class="tab-count">2</span></button>
+      <button class="video-tab" data-tab="mech" onclick="filterVideos('mech', this)"><span class="tab-dot" style="background:#cc6600"></span>機械工程<span class="tab-count">4</span></button>
+      <button class="video-tab" data-tab="sys" onclick="filterVideos('sys', this)"><span class="tab-dot" style="background:#009918"></span>系統整合<span class="tab-count">10</span></button>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+      <!-- 電控工程 -->
+      <div class="video-item" data-cat="elec" onclick="playVideo(this, 'ISfRQXSbECQ')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/ISfRQXSbECQ/hqdefault.jpg" alt="配盤接線" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#7ec8f7"></span><span class="video-cat-text cat-elec">電控工程</span></div>
+          <div class="video-title-text">配盤接線</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="elec" onclick="playVideo(this, 'zbcOz6zg8vs')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/zbcOz6zg8vs/hqdefault.jpg" alt="人機畫面" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#7ec8f7"></span><span class="video-cat-text cat-elec">電控工程</span></div>
+          <div class="video-title-text">人機畫面</div>
+        </div>
+      </div>
+      <!-- 機械工程 -->
+      <div class="video-item" data-cat="mech" onclick="playVideo(this, 'js9Gkw4cQp8')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/js9Gkw4cQp8/hqdefault.jpg" alt="機構設計" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#ffbb77"></span><span class="video-cat-text cat-mech">機械工程</span></div>
+          <div class="video-title-text">機構設計</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="mech" onclick="playVideo(this, '9nGn-NRTiRw')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/9nGn-NRTiRw/hqdefault.jpg" alt="測試平台" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#ffbb77"></span><span class="video-cat-text cat-mech">機械工程</span></div>
+          <div class="video-title-text">測試平台</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="mech" onclick="playVideo(this, '5J0jXBV5bfA')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/5J0jXBV5bfA/hqdefault.jpg" alt="產線治具" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#ffbb77"></span><span class="video-cat-text cat-mech">機械工程</span></div>
+          <div class="video-title-text">產線治具</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="mech" onclick="playVideo(this, 'uHtCUhzZpQ8')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/uHtCUhzZpQ8/hqdefault.jpg" alt="設備載盤" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#ffbb77"></span><span class="video-cat-text cat-mech">機械工程</span></div>
+          <div class="video-title-text">設備載盤</div>
+        </div>
+      </div>
+      <!-- 系統整合 -->
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'gHOrVblwWBE')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/gHOrVblwWBE/hqdefault.jpg" alt="螺絲自動鎖附機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">螺絲自動鎖附機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'zunA7RZgwpY')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/zunA7RZgwpY/hqdefault.jpg" alt="雷射雕刻讀碼機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">雷射雕刻讀碼機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'HUs5EkISQS0')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/HUs5EkISQS0/hqdefault.jpg" alt="滑軌擋塊組裝機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">滑軌擋塊組裝機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'RPKiR6EmUNU')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/RPKiR6EmUNU/hqdefault.jpg" alt="旋鉚自動入料機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">旋鉚自動入料機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'K4bDI_8G0CQ')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/K4bDI_8G0CQ/hqdefault.jpg" alt="滑軌擋塊壓入機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">滑軌擋塊壓入機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'Di9aXJEHc1A')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/Di9aXJEHc1A/hqdefault.jpg" alt="滑軌入珠組裝機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">滑軌入珠組裝機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'uKo6J3vWi6U')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/uKo6J3vWi6U/hqdefault.jpg" alt="鐵板自動切圓機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">鐵板自動切圓機</div>
+        </div>
+      </div>
+      <div class="video-item" data-cat="sys" onclick="playVideo(this, 'lvZrL8OJjiw')">
+        <div class="video-thumb"><img src="https://i.ytimg.com/vi/lvZrL8OJjiw/hqdefault.jpg" alt="沖床工站轉移機" loading="lazy"></div>
+        <div class="video-play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+        <div class="video-overlay">
+          <div class="video-cat-row"><span class="video-cat-dot" style="background:#66dd88"></span><span class="video-cat-text cat-sys">系統整合</span></div>
+          <div class="video-title-text">沖床工站轉移機</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-tag">Contact Us</div>
+    <h2 class="section-title">聯絡我們</h2>
+    <p class="contact-company-name">佰印自動化科技有限公司</p>
+    <p class="section-subtitle">歡迎來電、來信或填寫下方表單，我們將盡快與您聯繫。</p>
+
+    <div class="contact-grid">
+
+      <!-- 左欄：公司資訊 -->
+      <div class="contact-info">
+        <div class="contact-info-block-title">公司資訊</div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-val">247 新北市蘆洲區<br>民族路336巷56號1樓</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.61 19a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 3.09 4.18 2 2 0 0 1 5.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">電話</div>
+            <div class="contact-info-val"><a href="tel:0282861203">02-8286-1203</a></div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="2" x2="18" y2="7"/><line x1="18" y1="11" x2="18" y2="12"/><rect x="2" y="2" width="16" height="20" rx="2"/><path d="M6 6h4M6 10h4M6 14h4"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">傳真</div>
+            <div class="contact-info-val">02-8286-1273</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-val"><a href="mailto:incontrolauto001@gmail.com">incontrolauto001@gmail.com</a></div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8A8.5 8.5 0 0 1 3.5 12a8.38 8.38 0 0 1 .9-3.8A8.5 8.5 0 0 1 12 3.5a8.38 8.38 0 0 1 3.8.9L21 3l-1.4 5.2A8.38 8.38 0 0 1 21 11.5z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">LINE ID</div>
+            <div class="contact-info-val"><a href="https://line.me/ti/p/~awu3989" target="_blank">@awu3989</a></div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 0 0-2 2v2"/><path d="M19 17h-4a2 2 0 0 0-2 2v2"/><rect x="7" y="2" width="10" height="10" rx="2"/><path d="M12 12v5"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">統一編號</div>
+            <div class="contact-info-val">66417318</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右欄：詢問表單 -->
+      <div class="contact-form-wrap">
+        <div class="contact-form-title contact-info-block-title">詢問表單</div>
+
+        <!-- 送出成功提示（預設隱藏） -->
+        <div class="form-success" id="formSuccess">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          <div>
+            <strong>訊息已送出！</strong><br>
+            我們會盡快與您聯繫，謝謝。
+          </div>
+        </div>
+
+        <form id="contactForm" action="https://formspree.io/f/mlgkewyy" method="POST" novalidate>
+          <!-- Formspree：回覆收件人 -->
+          <input type="hidden" name="_replyto" id="replytoField">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fieldName">姓名 <span class="form-req">*</span></label>
+              <input type="text" id="fieldName" name="姓名" placeholder="請輸入您的姓名" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fieldCompany">公司名稱</label>
+              <input type="text" id="fieldCompany" name="公司名稱" placeholder="（選填）" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fieldPhone">電話 <span class="form-req">*</span></label>
+              <input type="tel" id="fieldPhone" name="電話" placeholder="例：0912-345-678" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="fieldEmail">Email</label>
+              <input type="email" id="fieldEmail" name="Email" placeholder="（選填）" autocomplete="email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldSubject">詢問類別 <span class="form-req">*</span></label>
+            <select id="fieldSubject" name="詢問類別" required>
+              <option value="" disabled selected>請選擇詢問項目</option>
+              <option value="自動化電控工程">自動化電控工程</option>
+              <option value="自動化機械設備">自動化機械設備</option>
+              <option value="系統整合應用">系統整合應用</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fieldMsg">詢問內容 <span class="form-req">*</span></label>
+            <textarea id="fieldMsg" name="詢問內容" placeholder="請簡單描述您的需求或問題…" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span id="submitText">送出詢問</span>
+            <span id="submitLoading" style="display:none">傳送中…</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© <span id="footerYear"></span> IN CONTROL AUTOMATION TECHNOLOGY Co., Ltd. All rights reserved.</div>
+  </div>
+</footer>
+
+
+<div class="floating-actions">
+<a class="floating-btn line-btn" href="https://line.me/ti/p/~awu3989" target="_blank">LINE</a>
+</div>
+
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@type":"LocalBusiness",
+ "name":"佰印自動化科技有限公司",
+ "telephone":"02-8286-1203",
+ "email":"incontrolauto001@gmail.com",
+ "address":{
+   "@type":"PostalAddress",
+   "streetAddress":"民族路336巷56號1樓",
+   "addressLocality":"新北市蘆洲區"
+ }
+}
+</script>
+
+
+<script>
+// 影片分類篩選
+function filterVideos(cat, btn) {
+  document.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.video-item').forEach(item => {
+    item.style.display = (item.dataset.cat === cat) ? '' : 'none';
+  });
+}
+// 頁面載入預設顯示電控工程
+document.addEventListener('DOMContentLoaded', function() {
+  const firstTab = document.querySelector('.video-tab[data-tab="elec"]');
+  if (firstTab) filterVideos('elec', firstTab);
+});
+
+// YouTube 點擊播放
+function playVideo(el, videoId) {
+  const iframe = document.createElement('iframe');
+  iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&origin=' + location.origin;
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
+  iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+  iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;display:block;border-radius:10px;';
+  el.innerHTML = '';
+  el.style.cursor = 'default';
+  el.removeAttribute('onclick');
+  el.appendChild(iframe);
+}
+
+// 漢堡選單
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click', () => {
+  hamburgerBtn.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+// 點選選單項目後自動關閉
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburgerBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// 聯絡表單送出（Formspree AJAX）
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // 同步 email 到 _replyto 欄位
+    const emailVal = document.getElementById('fieldEmail').value;
+    document.getElementById('replytoField').value = emailVal;
+
+    const submitBtn  = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitLoad = document.getElementById('submitLoading');
+    const successBox = document.getElementById('formSuccess');
+
+    submitBtn.disabled  = true;
+    submitText.style.display = 'none';
+    submitLoad.style.display = 'inline';
+
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        // 成功：隱藏表單，顯示成功訊息
+        contactForm.style.display = 'none';
+        successBox.classList.add('show');
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        const data = await res.json();
+        const msg = (data && data.errors)
+          ? data.errors.map(err => err.message).join('、')
+          : '送出失敗，請直接來電或 Email 與我們聯繫。';
+        alert('⚠️ ' + msg);
+        submitBtn.disabled  = false;
+        submitText.style.display = 'inline';
+        submitLoad.style.display = 'none';
+      }
+    } catch {
+      alert('⚠️ 網路異常，請稍後再試，或直接來電 02-8286-1203。');
+      submitBtn.disabled  = false;
+      submitText.style.display = 'inline';
+      submitLoad.style.display = 'none';
+    }
+  });
+}
+
+// Footer 年份
+const startYear = 2025;
+const thisYear = new Date().getFullYear();
+const yearEl = document.getElementById('footerYear');
+if (yearEl) {
+  yearEl.textContent = thisYear > startYear ? startYear + '–' + thisYear : startYear;
+}
+</script>
+
+</body>
+</html>
