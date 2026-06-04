@@ -598,6 +598,49 @@
     .hero::before { display: none; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero-stats { gap: 28px; }
+
+    /* Hero */
+    .hero-content { padding: 60px 5vw 48px; }
+    .hero-tag { font-size: 18px; padding: 9px 22px; margin-bottom: 24px; }
+    .hero-tagline { font-size: 18px; letter-spacing: 0.5px; }
+    .hero-h1 { font-size: clamp(28px, 7vw, 42px); }
+    .hero-sub { font-size: 15px; margin-bottom: 32px; }
+    .hero-services { margin-top: 36px; }
+
+    /* Section 間距縮小 */
+    section { padding: 60px 5vw; }
+
+    /* 服務卡片：圖標縮小 */
+    .service-icon { width: 52px; height: 52px; }
+    .service-icon svg { width: 26px; height: 26px; }
+    .service-title { font-size: 18px; }
+    .service-card { padding: 20px 22px; gap: 16px; }
+
+    /* 影片篩選按鈕縮小 */
+    .video-tab { padding: 8px 14px; font-size: 13px; }
+    .video-tabs { gap: 8px; margin: 28px 0 20px; }
+
+    /* 聯絡表單 */
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-company-name { font-size: 20px; }
+    .contact-form-title { font-size: 16px; }
+
+    /* About panels */
+    .about-panels { grid-template-columns: 1fr; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  /* 超小螢幕（390px 以下）*/
+  @media (max-width: 430px) {
+    .hero-tag { font-size: 15px; padding: 7px 16px; }
+    .hero-tagline { font-size: 16px; }
+    .video-tab { padding: 7px 11px; font-size: 12px; }
+    .video-tab .tab-dot { width: 8px; height: 8px; }
+    .contact-info-item { gap: 12px; }
+    .contact-icon { width: 42px; height: 42px; }
+    .contact-icon svg { width: 20px; height: 20px; }
   }
 
 .floating-actions{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:9999}
