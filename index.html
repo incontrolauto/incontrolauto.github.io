@@ -270,7 +270,7 @@
 
   /* 影片格：兩欄全出血 */
   .video-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
   }
   .video-item {
@@ -602,26 +602,35 @@
     /* Hero */
     .hero-content { padding: 60px 5vw 48px; }
     .hero-tag { font-size: 18px; padding: 9px 22px; margin-bottom: 24px; }
-    .hero-tagline { font-size: 18px; letter-spacing: 0.5px; }
+    .hero-tagline { font-size: 16px; letter-spacing: 0px; white-space: normal; }
     .hero-h1 { font-size: clamp(28px, 7vw, 42px); }
     .hero-sub { font-size: 15px; margin-bottom: 32px; }
     .hero-services { margin-top: 36px; }
 
     /* Section 間距縮小 */
     section { padding: 60px 5vw; }
+    .section-inner { width: 100%; }
 
-    /* 服務卡片：圖標縮小 */
+    /* 服務卡片 */
     .service-icon { width: 52px; height: 52px; }
     .service-icon svg { width: 26px; height: 26px; }
     .service-title { font-size: 18px; }
     .service-card { padding: 20px 22px; gap: 16px; }
 
-    /* 影片篩選按鈕縮小 */
+    /* 影片篩選按鈕 */
     .video-tab { padding: 8px 14px; font-size: 13px; }
     .video-tabs { gap: 8px; margin: 28px 0 20px; }
+    /* 影片格：手機兩欄，gap 縮小 */
+    .video-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .video-overlay { padding: 8px 10px; }
+    .video-title-text { font-size: 12px; }
+    .video-cat-text { font-size: 10px; }
+    .video-cat-dot { width: 6px; height: 6px; }
 
-    /* 聯絡表單 */
-    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    /* 聯絡表單：單欄、gap 縮小、撐滿寬度 */
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; width: 100%; }
+    .contact-info { width: 100%; }
+    .contact-form-wrap { width: 100%; }
     .contact-company-name { font-size: 20px; }
     .contact-form-title { font-size: 16px; }
 
@@ -632,10 +641,10 @@
     .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
   }
 
-  /* 超小螢幕（390px 以下）*/
+  /* 超小螢幕（430px 以下）*/
   @media (max-width: 430px) {
     .hero-tag { font-size: 15px; padding: 7px 16px; }
-    .hero-tagline { font-size: 16px; }
+    .hero-tagline { font-size: 15px; }
     .video-tab { padding: 7px 11px; font-size: 12px; }
     .video-tab .tab-dot { width: 8px; height: 8px; }
     .contact-info-item { gap: 12px; }
