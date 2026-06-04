@@ -617,9 +617,11 @@
     .service-title { font-size: 18px; }
     .service-card { padding: 20px 22px; gap: 16px; }
 
-    /* 影片篩選按鈕 */
-    .video-tab { padding: 8px 14px; font-size: 13px; }
-    .video-tabs { gap: 8px; margin: 28px 0 20px; }
+    /* 影片篩選按鈕：三個同一行 */
+    .video-tabs { gap: 6px; margin: 28px 0 20px; flex-wrap: nowrap; }
+    .video-tab { padding: 7px 10px; font-size: 12px; gap: 6px; }
+    .video-tab .tab-dot { width: 8px; height: 8px; }
+    .video-tab .tab-count { font-size: 11px; }
     /* 影片格：手機兩欄，gap 縮小 */
     .video-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .video-overlay { padding: 8px 10px; }
@@ -696,7 +698,7 @@
   <div class="hero-content">
     <div class="hero-tag">自動化解決方案</div>
     <h1 class="hero-h1"><span>電控 × 機械 × 系統</span></h1>
-    <p class="hero-tagline">從規劃 → 設計 → 製作 → 導入&emsp;一站完成</p>
+    <p class="hero-tagline">從 規劃 → 設計 → 製作 → 導入 一站完成</p>
     <p class="hero-sub">佰印自動化科技提供全方位自動化工程服務<br>從電控規劃、機械設計到系統整合<br>一站式解決您的製造挑戰。</p>
     <div class="services-grid hero-services">
 
@@ -708,7 +710,7 @@
         </div>
         <div class="service-body">
           <div class="service-title">自動化電控工程</div>
-          <p class="service-desc">PLC 程式規劃、HMI 人機介面設計、電控盤佈線整合、伺服馬達與變頻器控制，精準掌握每一個控制節點。</p>
+          <p class="service-desc">PLC、HMI程式規劃、電控佈線整合、伺服與變頻控制，精準掌握每一個控制節點。</p>
         </div>
       </div>
 
@@ -721,7 +723,7 @@
         </div>
         <div class="service-body">
           <div class="service-title">自動化機械設備</div>
-          <p class="service-desc">客製化自動化機台設計與製作、治具開發、機械手臂整合、輸送系統規劃，滿足各類產線需求。</p>
+          <p class="service-desc">客製機台設計與製作、治具開發、機械手臂整合、輸送系統規劃，滿足各類產線需求。</p>
         </div>
       </div>
 
@@ -733,7 +735,7 @@
         </div>
         <div class="service-body">
           <div class="service-title">系統整合應用</div>
-          <p class="service-desc">跨設備通訊整合、機械手臂控制整合、生產資料擷取分析、既有設備升級改造，讓您的產線智慧連動。</p>
+          <p class="service-desc">跨設備通訊整合、生產資料擷取分析、既有設備升級改造，讓您的產線智慧連動。</p>
         </div>
       </div>
 
