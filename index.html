@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>佰印自動化科技有限公司</title>
+<title>佰印自動化科技 | PLC電控・機械設備・系統整合｜新北蘆洲</title>
 
 <meta name="description" content="佰印自動化科技有限公司提供自動化電控工程、PLC程式設計、HMI人機介面、機械設備開發、系統整合與產線升級服務。">
 <meta name="keywords" content="自動化,PLC,HMI,電控工程,機械設備,系統整合,產線改善">
@@ -1070,10 +1070,25 @@ function playVideo(el, videoId) {
   iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
   iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
   iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;display:block;border-radius:10px;';
+
+  // 關閉按鈕
+  const closeBtn = document.createElement('button');
+  closeBtn.innerHTML = '✕';
+  closeBtn.style.cssText = 'position:absolute;top:8px;right:8px;z-index:10;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.65);color:#fff;border:none;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;';
+  closeBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    // 還原成原本的縮圖與遮罩
+    el.innerHTML = originalHTML;
+    el.style.cursor = 'pointer';
+    el.setAttribute('onclick', 'playVideo(this, \'' + videoId + '\')');
+  });
+
+  const originalHTML = el.innerHTML;
   el.innerHTML = '';
   el.style.cursor = 'default';
   el.removeAttribute('onclick');
   el.appendChild(iframe);
+  el.appendChild(closeBtn);
 }
 
 // 漢堡選單
