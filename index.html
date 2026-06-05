@@ -281,6 +281,10 @@
     display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
   }
+  @keyframes slideInLeft  { from { opacity:0; transform:translateX( 52px); } to { opacity:1; transform:translateX(0); } }
+  @keyframes slideInRight { from { opacity:0; transform:translateX(-52px); } to { opacity:1; transform:translateX(0); } }
+  .video-grid.slide-left  .video-item:not([style*="display: none"]) { animation: slideInLeft  .3s cubic-bezier(.22,.68,0,1.2) both; }
+  .video-grid.slide-right .video-item:not([style*="display: none"]) { animation: slideInRight .3s cubic-bezier(.22,.68,0,1.2) both; }
   .video-item {
     border-radius: 10px; overflow: hidden;
     position: relative;
@@ -1112,9 +1116,13 @@ function playVideo(el) {
 }
 
 // ── 影片分類篩選 ──
-function filterVideos(cat, btn) {
+function filterVideos(cat, btn, dir) {
   document.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
+  const grid = document.getElementById('videoGrid');
+  grid.classList.remove('slide-left','slide-right');
+  void grid.offsetWidth;
+  if (dir) grid.classList.add(dir);
   document.querySelectorAll('.video-item').forEach(item => {
     item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
   });
@@ -1133,7 +1141,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // 分類 Tab 切換
   document.querySelectorAll('.video-tab').forEach(btn => {
     btn.addEventListener('click', function() {
-      filterVideos(this.dataset.tab, this);
+      const activeBtn = document.querySelector('.video-tab.active');
+      const tabs = Array.from(document.querySelectorAll('.video-tab'));
+      const curIdx = tabs.indexOf(activeBtn);
+      const newIdx = tabs.indexOf(this);
+      const dir = newIdx > curIdx ? 'slide-left' : 'slide-right';
+      filterVideos(this.dataset.tab, this, dir);
     });
   });
 
@@ -1159,7 +1172,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (cur === -1) return;
     const next = (cur + (dx < 0 ? 1 : -1) + tabOrder.length) % tabOrder.length;
     const nextBtn = document.querySelector(`.video-tab[data-tab="${tabOrder[next]}"]`);
-    if (nextBtn) filterVideos(tabOrder[next], nextBtn);
+    if (nextBtn) filterVideos(tabOrder[next], nextBtn, dx < 0 ? 'slide-left' : 'slide-right');
   }, { passive: true });
 
 });
