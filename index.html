@@ -1120,9 +1120,11 @@ function filterVideos(cat, btn, dir) {
   document.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   const grid = document.getElementById('videoGrid');
-  grid.classList.remove('slide-left','slide-right');
-  void grid.offsetWidth;
-  if (dir) grid.classList.add(dir);
+  if (dir) {
+    grid.classList.remove('slide-left','slide-right');
+    void grid.offsetWidth;
+    grid.classList.add(dir);
+  }
   document.querySelectorAll('.video-item').forEach(item => {
     item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
   });
