@@ -22,6 +22,8 @@
 <meta name="robots" content="index,follow">
 <link rel="icon" href="images/favicon.ico">
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Barlow:wght@300;400;500;600;700&display=swap');
 
@@ -173,14 +175,6 @@
     display: inline-block;
   }
   .btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
-  .hero-stats {
-    margin-top: 64px; display: flex; gap: 48px; flex-wrap: wrap;
-  }
-  .hero-stat-num {
-    font-family: var(--font-en); font-size: 36px; font-weight: 600; color: var(--green);
-  }
-  .hero-stat-label { font-size: 13px; color: var(--gray-3); margin-top: 2px; }
-
   /* SECTION COMMON */
   section { padding: 96px 5vw; }
   .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -606,7 +600,7 @@
     .nav-hamburger { display: flex; }
     .hero::before { display: none; }
     .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-stats { gap: 28px; }
+
 
     /* Hero */
     .hero-content { padding: 60px 5vw 48px; }
@@ -662,11 +656,6 @@
     .contact-icon { width: 42px; height: 42px; }
     .contact-icon svg { width: 20px; height: 20px; }
   }
-
-.floating-actions{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:9999}
-.floating-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;font-size:12px;font-weight:700;box-shadow:0 4px 15px rgba(0,0,0,.25)}
-.line-btn{background:#00b900}
-.phone-btn{background:#00c820}
 
 </style>
 </head>
@@ -900,25 +889,78 @@
       <div class="contact-info">
         <div class="contact-info-block-title">公司資訊</div>
 
+        <!-- 地址 -->
         <div class="contact-info-item">
           <div class="contact-icon">
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
-          <div>
-            <div class="contact-info-val">247 新北市蘆洲區<br>民族路336巷56號1樓</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex:1;gap:14px;">
+            <div>
+              <div class="contact-info-val">247 新北市蘆洲區<br>民族路336巷56號1樓</div>
+            </div>
+            <a href="https://maps.google.com/?q=新北市蘆洲區民族路336巷56號1樓" target="_blank" title="在 Google 地圖開啟"
+               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
+               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+              <i class="bi bi-geo-alt-fill" style="font-size:20px;color:#fff;line-height:1;"></i>
+            </a>
           </div>
         </div>
 
+        <!-- Email -->
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex:1;gap:14px;">
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-val">incontrolauto001@gmail.com</div>
+            </div>
+            <a href="mailto:incontrolauto001@gmail.com" title="寄送 Email"
+               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
+               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+              <i class="bi bi-envelope-fill" style="font-size:20px;color:#fff;line-height:1;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- LINE ID -->
+        <div class="contact-info-item">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8A8.5 8.5 0 0 1 3.5 12a8.38 8.38 0 0 1 .9-3.8A8.5 8.5 0 0 1 12 3.5a8.38 8.38 0 0 1 3.8.9L21 3l-1.4 5.2A8.38 8.38 0 0 1 21 11.5z"/></svg>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex:1;gap:14px;">
+            <div>
+              <div class="contact-info-label">LINE ID</div>
+              <div class="contact-info-val">awu3989</div>
+            </div>
+            <a href="https://line.me/ti/p/~awu3989" target="_blank" title="加 LINE 詢問"
+               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
+               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+              <i class="bi bi-line" style="font-size:22px;color:#fff;line-height:1;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 電話 -->
         <div class="contact-info-item">
           <div class="contact-icon">
             <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.61 19a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 3.09 4.18 2 2 0 0 1 5.09 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
-          <div>
-            <div class="contact-info-label">電話</div>
-            <div class="contact-info-val"><a href="tel:0282861203">02-8286-1203</a></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;flex:1;gap:14px;">
+            <div>
+              <div class="contact-info-label">電話</div>
+              <div class="contact-info-val">02-8286-1203</div>
+            </div>
+            <a href="tel:0282861203" title="撥打電話"
+               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
+               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+              <i class="bi bi-telephone-fill" style="font-size:20px;color:#fff;line-height:1;"></i>
+            </a>
           </div>
         </div>
 
+        <!-- 傳真 -->
         <div class="contact-info-item">
           <div class="contact-icon">
             <svg viewBox="0 0 24 24"><line x1="18" y1="2" x2="18" y2="7"/><line x1="18" y1="11" x2="18" y2="12"/><rect x="2" y="2" width="16" height="20" rx="2"/><path d="M6 6h4M6 10h4M6 14h4"/></svg>
@@ -929,26 +971,7 @@
           </div>
         </div>
 
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">Email</div>
-            <div class="contact-info-val"><a href="mailto:incontrolauto001@gmail.com">incontrolauto001@gmail.com</a></div>
-          </div>
-        </div>
-
-        <div class="contact-info-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8A8.5 8.5 0 0 1 3.5 12a8.38 8.38 0 0 1 .9-3.8A8.5 8.5 0 0 1 12 3.5a8.38 8.38 0 0 1 3.8.9L21 3l-1.4 5.2A8.38 8.38 0 0 1 21 11.5z"/></svg>
-          </div>
-          <div>
-            <div class="contact-info-label">LINE ID</div>
-            <div class="contact-info-val"><a href="https://line.me/ti/p/~awu3989" target="_blank">@awu3989</a></div>
-          </div>
-        </div>
-
+        <!-- 統一編號 -->
         <div class="contact-info-item">
           <div class="contact-icon">
             <svg viewBox="0 0 24 24"><path d="M9 17H5a2 2 0 0 0-2 2v2"/><path d="M19 17h-4a2 2 0 0 0-2 2v2"/><rect x="7" y="2" width="10" height="10" rx="2"/><path d="M12 12v5"/></svg>
@@ -1035,9 +1058,6 @@
 </footer>
 
 
-<div class="floating-actions">
-<a class="floating-btn line-btn" href="https://line.me/ti/p/~awu3989" target="_blank">LINE</a>
-</div>
 
 
 <script type="application/ld+json">
