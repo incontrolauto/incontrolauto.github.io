@@ -90,13 +90,6 @@
     transition: color 0.2s;
   }
   .nav-links a:hover { color: var(--green); }
-  .nav-contact {
-    background: var(--green); color: var(--white);
-    padding: 9px 22px; border-radius: 4px;
-    font-size: 13px; font-weight: 500; text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-contact:hover { background: var(--green-dark); }
 
   /* HERO */
   .hero {
@@ -460,6 +453,7 @@
     background-position: right 14px center;
     cursor: pointer;
   }
+  /* Safari / iOS 不支援 option 自訂背景色，此樣式僅在 Chrome / Firefox 生效 */
   .form-group select option { background: #222; color: var(--white); }
   .form-group select:focus { border-color: var(--green); }
 
@@ -536,7 +530,7 @@
 
   /* MOBILE */
   @media (max-width: 768px) {
-    .nav-links, .nav-contact { display: none; }
+    .nav-links { display: none; }
     .nav-hamburger { display: flex; }
     .hero::before { display: none; }
     .contact-grid { grid-template-columns: 1fr; gap: 40px; }
