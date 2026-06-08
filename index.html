@@ -1070,9 +1070,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 預設顯示電控工程
-  const firstTab = document.querySelector('.video-tab[data-tab="elec"]');
-  if (firstTab) filterVideos('elec', firstTab);
+  // 預設顯示電控工程（直接操作 DOM，不觸發捲動）
+  document.querySelectorAll('.video-item').forEach(item => {
+    item.style.display = item.dataset.cat === 'elec' ? '' : 'none';
+  });
 
 
 });
