@@ -1004,6 +1004,12 @@
 
 
 <script>
+// ── 停用瀏覽器自動還原捲動位置 ──
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('load', () => window.scrollTo(0, 0));
+
 // ── 影片播放（不用 onclick，統一由 addEventListener 管理）──
 function playVideo(el) {
   const videoId = el.dataset.videoid;
