@@ -364,84 +364,6 @@
   .video-badge { display: none; }
   .badge-elec, .badge-mech, .badge-sys {}
 
-  .about-company-name {
-    font-size: 26px; font-weight: 700; color: var(--black);
-    margin-top: 12px; margin-bottom: 12px; letter-spacing: 0.5px;
-  }
-
-  /* ABOUT PANELS */
-  .about-panels {
-    margin-top: 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-  .about-panel {
-    background: var(--white);
-    border: 1px solid #e8e8e8;
-    border-radius: 10px;
-    padding: 32px 36px;
-  }
-  .about-panel-title {
-    font-size: 18px; font-weight: 700; color: var(--black);
-    margin-bottom: 24px; padding-bottom: 14px;
-    border-bottom: 2px solid var(--green);
-    letter-spacing: 0.5px;
-  }
-  .about-panel .about-item { margin-bottom: 20px; }
-  .about-panel .about-item:last-child { margin-bottom: 0; }
-  .about-panel .about-item-value a {
-    color: var(--black); text-decoration: none;
-    transition: color 0.2s;
-  }
-  .about-panel .about-item-value a:hover { color: var(--green); }
-  @media (max-width: 768px) {
-    .about-panels { grid-template-columns: 1fr; }
-  }
-
-  /* ABOUT */
-  #about { background: var(--gray-5); }
-  .about-grid {
-    margin-top: 56px;
-    display: grid; grid-template-columns: 1fr; gap: 0;
-  }
-  .about-item { margin-bottom: 28px; }
-  .about-item-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--gray-3); margin-bottom: 6px; font-family: var(--font-en);
-  }
-  .about-item-value {
-    font-size: 16px; font-weight: 500; color: var(--black);
-  }
-  .about-visual {
-    background: var(--black); border-radius: 12px;
-    padding: 48px 40px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    min-height: 320px;
-    position: relative; overflow: hidden;
-  }
-  .about-visual::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(0,200,32,0.15) 0%, transparent 60%);
-  }
-  .about-visual img { height: 72px; width: auto; position: relative; z-index: 1; }
-  .about-visual-name {
-    margin-top: 24px; font-size: 20px; font-weight: 700; color: var(--white);
-    position: relative; z-index: 1;
-  }
-  .about-visual-en {
-    font-family: var(--font-en); font-size: 11px; color: rgba(255,255,255,0.4);
-    letter-spacing: 2px; text-transform: uppercase; margin-top: 6px;
-    position: relative; z-index: 1;
-  }
-  .about-visual-slogan {
-    margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);
-    text-align: center; position: relative; z-index: 1;
-    font-size: 13px; color: rgba(255,255,255,0.5); line-height: 2;
-    width: 100%;
-  }
-  .about-visual-slogan span { color: var(--green); }
 
   /* CONTACT */
   #contact { background: var(--black); }
@@ -489,6 +411,15 @@
   }
   .btn-submit:hover { background: var(--green-dark); }
   .btn-submit:disabled { background: var(--gray-3); cursor: not-allowed; }
+
+  .contact-action-btn {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: #2d2d2d;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .contact-action-btn:hover { background: #1a1a1a; }
 
   /* Contact section 補充樣式 */
   .contact-info-val a {
@@ -608,7 +539,7 @@
     .nav-links, .nav-contact { display: none; }
     .nav-hamburger { display: flex; }
     .hero::before { display: none; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
 
 
     /* Hero */
@@ -647,9 +578,6 @@
     .contact-form-wrap { width: 100%; }
     .contact-company-name { font-size: 20px; }
     .contact-form-title { font-size: 16px; }
-
-    /* About panels */
-    .about-panels { grid-template-columns: 1fr; }
 
     /* Footer */
     .footer-inner { flex-direction: column; gap: 8px; text-align: center; }
@@ -908,8 +836,7 @@
               <div class="contact-info-val">24702 新北市蘆洲區<br>民族路336巷56號</div>
             </div>
             <a href="https://maps.google.com/?q=新北市蘆洲區民族路336巷56號" target="_blank" title="在 Google 地圖開啟"
-               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
-               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+               class="contact-action-btn">
               <i class="bi bi-geo-alt-fill" style="font-size:20px;color:#fff;line-height:1;"></i>
             </a>
           </div>
@@ -926,8 +853,7 @@
               <div class="contact-info-val">incontrolauto001@gmail.com</div>
             </div>
             <a href="mailto:incontrolauto001@gmail.com" title="寄送 Email"
-               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
-               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+               class="contact-action-btn">
               <i class="bi bi-envelope-fill" style="font-size:20px;color:#fff;line-height:1;"></i>
             </a>
           </div>
@@ -944,8 +870,7 @@
               <div class="contact-info-val">awu3989</div>
             </div>
             <a href="https://line.me/ti/p/~awu3989" target="_blank" title="加 LINE 詢問"
-               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
-               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+               class="contact-action-btn">
               <i class="bi bi-line" style="font-size:22px;color:#fff;line-height:1;"></i>
             </a>
           </div>
@@ -962,8 +887,7 @@
               <div class="contact-info-val">02-8286-1203</div>
             </div>
             <a href="tel:0282861203" title="撥打電話"
-               style="width:44px;height:44px;border-radius:10px;background:#2d2d2d;display:flex;align-items:center;justify-content:center;text-decoration:none;flex-shrink:0;transition:background 0.2s;"
-               onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#2d2d2d'">
+               class="contact-action-btn">
               <i class="bi bi-telephone-fill" style="font-size:20px;color:#fff;line-height:1;"></i>
             </a>
           </div>
@@ -1154,7 +1078,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 預設顯示電控工程
   const firstTab = document.querySelector('.video-tab[data-tab="elec"]');
-  if (firstTab) filterVideos('elec', firstTab);
+  if (firstTab) filterVideos('elec', firstTab, 'slide-left');
 
 
 });
