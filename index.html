@@ -192,7 +192,6 @@
   }
 
   /* SERVICES */
-  #services { background: var(--gray-5); }
   .services-grid {
     margin-top: 56px;
     display: grid; grid-template-columns: 1fr;
@@ -682,9 +681,9 @@
     <p class="section-subtitle">真實案例呈現，讓您了解我們的工程能力與施工品質。</p>
 
     <div class="video-tabs">
-      <button class="video-tab active" data-tab="elec"><span class="tab-dot" style="background:#0066cc"></span>電控工程<span class="tab-count">2</span></button>
+      <button class="video-tab" data-tab="elec"><span class="tab-dot" style="background:#0066cc"></span>電控工程<span class="tab-count">2</span></button>
       <button class="video-tab" data-tab="mech"><span class="tab-dot" style="background:#cc6600"></span>機械工程<span class="tab-count">4</span></button>
-      <button class="video-tab" data-tab="sys"><span class="tab-dot" style="background:#009918"></span>系統整合<span class="tab-count">10</span></button>
+      <button class="video-tab active" data-tab="sys"><span class="tab-dot" style="background:#009918"></span>系統整合<span class="tab-count">10</span></button>
     </div>
 
     <div class="video-grid" id="videoGrid">
@@ -993,12 +992,16 @@
  "@context":"https://schema.org",
  "@type":"LocalBusiness",
  "name":"佰印自動化科技有限公司",
+ "url":"https://incontrolauto.com/",
  "telephone":"02-8286-1203",
+ "faxNumber":"02-8286-1273",
  "email":"incontrolauto001@gmail.com",
  "address":{
    "@type":"PostalAddress",
    "streetAddress":"民族路336巷56號",
-   "addressLocality":"新北市蘆洲區"
+   "addressLocality":"新北市蘆洲區",
+   "postalCode":"24702",
+   "addressCountry":"TW"
  }
 }
 </script>
@@ -1077,9 +1080,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // 預設顯示電控工程（直接操作 DOM，不觸發捲動）
+  // 預設顯示系統整合（直接操作 DOM，不觸發捲動）
   document.querySelectorAll('.video-item').forEach(item => {
-    item.style.display = item.dataset.cat === 'elec' ? '' : 'none';
+    item.style.display = item.dataset.cat === 'sys' ? '' : 'none';
   });
 
 
