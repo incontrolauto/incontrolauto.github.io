@@ -684,7 +684,40 @@
       <button class="video-tab" data-tab="elec"><span class="tab-dot" style="background:#0066cc"></span>電控工程<span class="tab-count">2</span></button>
       <button class="video-tab" data-tab="mech"><span class="tab-dot" style="background:#cc6600"></span>機械工程<span class="tab-count">4</span></button>
       <button class="video-tab active" data-tab="sys"><span class="tab-dot" style="background:#009918"></span>系統整合<span class="tab-count">10</span></button>
+      <button class="video-tab" data-tab="proposal"><span class="tab-dot" style="background:#576c5d"></span>提案討論<span class="tab-count">🔒</span></button>
     </div>
+
+<style id="proposal-style">
+#videoGrid[hidden],#proposalPanel[hidden],#proposalPanel [hidden]{display:none!important}
+#proposalPanel{border:1px solid #dbe5de;border-radius:12px;padding:24px;background:#f8faf8;color:#222;margin-top:24px}
+#proposalPanel h3{font-size:22px;margin:0 0 12px}#proposalPanel p{line-height:1.7;margin:10px 0}
+#proposalPanel button,#proposalPanel .pd-file-button{border:1px solid #c8d7cc;border-radius:7px;background:white;color:#245b32;padding:10px 16px;font:inherit;cursor:pointer;display:inline-block}
+#proposalPanel button:disabled{opacity:.5;cursor:wait}#proposalPanel .pd-primary{background:#009918;color:white;border-color:#009918}
+#proposalPanel input,#proposalPanel textarea,#proposalPanel select{font:inherit;border:1px solid #ccd8cf;border-radius:6px;padding:10px;max-width:100%;background:white;color:#222}
+#proposalPanel textarea{width:100%;min-height:80px}#proposalPanel .pd-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
+#proposalPanel .pd-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}#proposalPanel .pd-list{display:flex;flex-direction:column;gap:8px}
+#proposalPanel .pd-list button{text-align:left;overflow-wrap:anywhere}#proposalPanel .pd-list button[aria-pressed=true]{background:#e0f2e3;border-color:#009918}
+#proposalPanel .pd-note{font-size:13px;color:#56685b}#proposalPanel .pd-status{min-height:24px;white-space:pre-wrap;color:#246032}
+#proposalPanel model-viewer{width:100%;height:520px;background:#edf1ed;border-radius:10px;touch-action:none}
+#proposalPanel .pd-image{display:block;max-width:100%;max-height:520px;margin:auto}#proposalPanel iframe{width:100%;height:520px;border:1px solid #ccd8cf}
+#proposalPanel .pd-description{white-space:pre-wrap;overflow-wrap:anywhere}#proposalPanel .pd-viewer{min-height:160px}#proposalPanel .pd-empty{padding:36px 12px;text-align:center;color:#65766a}
+@media(max-width:760px){#proposalPanel{padding:16px}#proposalPanel .pd-layout{grid-template-columns:1fr}#proposalPanel model-viewer,#proposalPanel iframe{height:380px}#proposalPanel .pd-list{max-height:200px;overflow:auto}}
+</style>
+<div id="proposalPanel" hidden>
+ <form id="pdLogin"><h3>提案討論</h3><p>此區提供案件開發圖面與討論資料，請輸入密碼。</p><div class="pd-row"><label for="pdPassword">密碼</label><input id="pdPassword" type="password" autocomplete="current-password" required><button class="pd-primary" type="submit">進入</button></div></form>
+ <div id="pdContent" hidden>
+  <div class="pd-row"><h3 style="margin:0;margin-right:auto">提案討論</h3><button id="pdManage" type="button">資料管理</button><button id="pdLock" type="button">登出／上鎖</button></div>
+  <div id="pdEditor" hidden>
+   <p class="pd-note">新增或修改後，請「匯出更新後 HTML」，再將檔案改名為 index.html 取代官網原檔，客戶才會看到新版。未匯出的修改只暫存於這台瀏覽器。</p>
+   <div class="pd-row"><label class="pd-file-button">＋ 上傳資料<input id="pdUpload" type="file" multiple hidden></label><button id="pdExport" class="pd-primary" type="button">匯出更新後 HTML</button></div>
+   <p class="pd-note">3D：GLB、STL（STL 無原始組件顏色）；預覽：PNG、JPG、WebP、GIF、PDF；其他檔案提供下載。STEP 請先轉 GLB 或 STL。單檔上限 25 MB，合計上限 60 MB。所有知道此密碼的人都能查看全部案件。</p>
+   <div id="pdFields" hidden><div class="pd-row"><label for="pdTitle">資料標題</label><input id="pdTitle"><label for="pdProject">案件名稱</label><input id="pdProject"></div><label for="pdDescription">討論說明</label><textarea id="pdDescription"></textarea><div class="pd-row"><button id="pdSave" type="button">儲存說明</button><button id="pdDelete" type="button">刪除此資料</button></div></div>
+  </div>
+  <div class="pd-row"><label for="pdFilter">案件</label><select id="pdFilter"><option value="">全部案件</option></select></div>
+  <div class="pd-layout"><div id="pdList" class="pd-list"></div><div><h3 id="pdHeading"></h3><div id="pdViewer" class="pd-viewer"></div><p id="pdDescriptionView" class="pd-description"></p><div id="pdTools" class="pd-row"></div></div></div>
+ </div>
+ <p id="pdStatus" class="pd-status" role="status" aria-live="polite"></p>
+</div>
 
     <div class="video-grid" id="videoGrid">
       <!-- 電控工程 -->
@@ -1007,6 +1040,49 @@
 </script>
 
 
+<script type="importmap">{"imports": {"three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js", "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<script id="pdEncrypted" type="application/json">{"version": 1, "salt": "a/IiUrnm56jrFvPtMAJtDw==", "iv": "Dc3L70WK3GJMmGap", "updated": 0, "data": "IPPt1iRkEz/PNK2pFXxvrPmsq0OdF2fg2dPwEpneJNxLCmhP8oP6CZDN7g=="}</script>
+<script id="proposal-code">
+// Proposal data are AES-GCM encrypted; the password and decrypted assets are never persisted.
+(() => {
+'use strict';
+let template;
+const $=id=>document.getElementById(id), embedded=JSON.parse($('pdEncrypted').textContent);
+let envelope=embedded,key=null,state=null,selected=null,urls=[],revision=0,busy=false,viewerPromise;
+const enc=new TextEncoder(),dec=new TextDecoder(),storeName='inc-proposal-'+embedded.salt;
+function b64(bytes){let s='';for(let i=0;i<bytes.length;i+=32768)s+=String.fromCharCode(...bytes.subarray(i,i+32768));return btoa(s)}
+function bytes(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0))}
+function status(s){$('pdStatus').textContent=s}
+function release(){revision++;$('pdViewer').replaceChildren();for(const u of urls)URL.revokeObjectURL(u);urls=[]}
+function objectURL(blob){const u=URL.createObjectURL(blob);urls.push(u);return u}
+function button(text,fn){const b=document.createElement('button');b.type='button';b.textContent=text;b.onclick=fn;return b}
+async function cache(mode,value){return new Promise((resolve,reject)=>{const r=indexedDB.open('inc-proposal-cache',1);r.onupgradeneeded=()=>r.result.createObjectStore('packages');r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,t=db.transaction('packages',mode),s=t.objectStore('packages');const q=mode==='readonly'?s.get(storeName):s.put(value,storeName);let result;q.onsuccess=()=>result=q.result;t.oncomplete=()=>{db.close();resolve(result)};t.onerror=()=>{db.close();reject(t.error)}}})}
+async function derive(password,salt){const base=await crypto.subtle.importKey('raw',enc.encode(password),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt:bytes(salt),iterations:310000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function decrypt(e,k){return JSON.parse(dec.decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:bytes(e.iv)},k,bytes(e.data))))}
+async function persist(){const iv=crypto.getRandomValues(new Uint8Array(12));state.updated=Date.now();envelope={version:1,salt:embedded.salt,iv:b64(iv),updated:state.updated,data:b64(new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(state)))))};try{await cache('readwrite',envelope);status('已加密暫存於此瀏覽器。請匯出 HTML 並更新官網，讓客戶看到修改。')}catch{status('瀏覽器無法暫存，請立即匯出 HTML 保存修改。')}}
+async function operation(fn){if(busy)return;busy=true;const controls=[...$('proposalPanel').querySelectorAll('button,input,textarea,select')];controls.forEach(c=>c.disabled=true);try{await fn()}catch(e){status('操作失敗：'+e.message)}finally{busy=false;controls.forEach(c=>c.disabled=false)}}
+function lock(){release();key=null;state=null;selected=null;$('pdContent').hidden=true;$('pdLogin').hidden=false;$('pdEditor').hidden=true;$('pdFields').hidden=true;$('pdPassword').value='';$('pdList').replaceChildren();$('pdTools').replaceChildren();$('pdHeading').textContent='';$('pdDescriptionView').textContent='';$('pdTitle').value='';$('pdProject').value='';$('pdDescription').value='';$('pdUpload').value='';$('pdFilter').replaceChildren(new Option('全部案件',''));status('');}
+function redraw(){const filter=$('pdFilter').value;const projects=[...new Set(state.files.map(f=>f.project||'未分類'))];$('pdFilter').replaceChildren(new Option('全部案件',''),...projects.map(p=>new Option(p,p)));$('pdFilter').value=projects.includes(filter)?filter:'';const visible=state.files.filter(f=>!$('pdFilter').value||(f.project||'未分類')===$('pdFilter').value);if(!visible.some(f=>f.id===selected))selected=visible[0]?.id||null;$('pdList').replaceChildren(...visible.map(f=>{const b=button((f.project||'未分類')+'｜'+f.title,()=>{selected=f.id;redraw()});b.setAttribute('aria-pressed',String(f.id===selected));return b}));show();}
+async function loadViewer(){if(!viewerPromise)viewerPromise=new Promise((resolve,reject)=>{const s=document.createElement('script');s.type='module';s.src='https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js';s.onload=()=>customElements.whenDefined('model-viewer').then(resolve);s.onerror=()=>{viewerPromise=null;reject(new Error('3D 元件載入失敗，請檢查網路後重新選取資料。'))};document.head.append(s)});return viewerPromise}
+async function toGLB(data){const [T,{STLLoader},{GLTFExporter}]=await Promise.all([import('three'),import('three/addons/loaders/STLLoader.js'),import('three/addons/exporters/GLTFExporter.js')]);const geometry=new STLLoader().parse(data.buffer);geometry.computeVertexNormals();geometry.center();const box=new T.Box3().setFromBufferAttribute(geometry.getAttribute('position'));const size=box.getSize(new T.Vector3());const max=Math.max(size.x,size.y,size.z);if(!Number.isFinite(max)||max<=0){geometry.dispose();throw new Error('STL 沒有有效的立體幾何資料。')}geometry.scale(1/max,1/max,1/max);const material=new T.MeshStandardMaterial({color:0x9cacb5,metalness:.25,roughness:.55,side:T.DoubleSide});const mesh=new T.Mesh(geometry,material);try{return await new GLTFExporter().parseAsync(mesh,{binary:true})}finally{geometry.dispose();material.dispose()}}
+async function show(){release();const token=revision,f=state?.files.find(f=>f.id===selected);$('pdTools').replaceChildren();$('pdFields').hidden=!f;$('pdHeading').textContent=f?.title||'';$('pdDescriptionView').textContent=f?.description||'';if(!f){const p=document.createElement('p');p.className='pd-empty';p.textContent='尚無討論資料，請開啟「資料管理」上傳。';$('pdViewer').append(p);return}
+$('pdTitle').value=f.title;$('pdProject').value=f.project||'';$('pdDescription').value=f.description||'';const data=bytes(f.data),ext=f.name.split('.').pop().toLowerCase();const blob=new Blob([data],{type:f.type||'application/octet-stream'}),url=objectURL(blob);const a=document.createElement('a');a.href=url;a.download=f.name;a.textContent='下載原始檔：'+f.name;$('pdTools').append(a);
+try{if(['glb','stl'].includes(ext)){const p=document.createElement('p');p.textContent='3D 載入中…';$('pdViewer').append(p);await loadViewer();let model=data;if(ext==='stl')model=await toGLB(data);if(token!==revision)return;const mv=document.createElement('model-viewer');mv.setAttribute('camera-controls','');mv.setAttribute('touch-action','none');mv.setAttribute('shadow-intensity','0.6');mv.setAttribute('camera-orbit','30deg 65deg auto');mv.setAttribute('min-camera-orbit','auto auto 5%');mv.setAttribute('max-camera-orbit','auto auto 1000%');mv.setAttribute('alt',f.title);mv.src=objectURL(new Blob([model],{type:'model/gltf-binary'}));mv.addEventListener('error',()=>{if(token===revision)status('此 3D 圖無法載入，請確認 GLB 已內嵌材質與模型，或重新轉檔。')});$('pdViewer').replaceChildren(mv);const hint=document.createElement('p');hint.className='pd-note';hint.textContent='左鍵拖曳旋轉、滾輪縮放、右鍵或 Shift＋拖曳平移；手機單指旋轉、雙指縮放／平移。';$('pdViewer').append(hint);
+const zoom=factor=>{const o=mv.getCameraOrbit();mv.cameraOrbit=`${o.theta}rad ${o.phi}rad ${o.radius*factor}m`};$('pdTools').append(button('放大',()=>zoom(.8)),button('縮小',()=>zoom(1.25)),button('重設視角',()=>{mv.cameraTarget='auto auto auto';mv.cameraOrbit='30deg 65deg auto';mv.jumpCameraToGoal()}),button('自動旋轉',e=>{mv.autoRotate=!mv.autoRotate;e.target.textContent=mv.autoRotate?'停止旋轉':'自動旋轉'}),button('全螢幕',async()=>{try{await $('pdViewer').requestFullscreen()}catch{status('此瀏覽器不支援全螢幕。')}}));
+}else if(['png','jpg','jpeg','webp','gif'].includes(ext)){const img=document.createElement('img');img.src=url;img.alt=f.title;img.className='pd-image';$('pdViewer').append(img)}else if(ext==='pdf'){const frame=document.createElement('iframe');frame.src=url;frame.title=f.title;$('pdViewer').append(frame);const note=document.createElement('p');note.className='pd-note';note.textContent='若瀏覽器無法預覽 PDF，請使用下載連結。';$('pdViewer').append(note)}else{const p=document.createElement('p');p.className='pd-empty';p.textContent='此格式提供下載，請使用適合的軟體開啟。';$('pdViewer').append(p)}}catch(e){if(token===revision){$('pdViewer').textContent=e.message;status('3D 預覽失敗，仍可下載原始檔。')}}}
+document.addEventListener('DOMContentLoaded',()=>{
+template='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+const panel=$('proposalPanel');document.querySelectorAll('.video-tab').forEach(b=>b.addEventListener('click',()=>{const is=b.dataset.tab==='proposal';panel.hidden=!is;$('videoGrid').hidden=is;if(is&&!key)$('pdPassword').focus();if(!is)lock()}));
+$('pdLogin').onsubmit=e=>{e.preventDefault();operation(async()=>{if(!crypto.subtle)throw new Error('請透過 HTTPS 網站或 localhost 開啟。');const password=$('pdPassword').value;status('解鎖中…');let k=await derive(password,embedded.salt);let payload;try{payload=await decrypt(embedded,k)}catch{throw new Error('密碼不正確。')}envelope=embedded;try{const cached=await cache('readonly');if(cached?.updated>embedded.updated){payload=await decrypt(cached,k);envelope=cached}}catch{}key=k;state=payload;$('pdPassword').value='';$('pdLogin').hidden=true;$('pdContent').hidden=false;status(envelope===embedded?'已解鎖。':'已載入此瀏覽器尚未同步官網的暫存版本。');redraw()})};
+$('pdManage').onclick=()=>{$('pdEditor').hidden=!$('pdEditor').hidden};$('pdLock').onclick=lock;$('pdFilter').onchange=redraw;
+$('pdUpload').onchange=()=>operation(async()=>{const files=[...$('pdUpload').files];if(!files.length)return;const total=state.files.reduce((n,f)=>n+bytes(f.data).length,0)+files.reduce((n,f)=>n+f.size,0);if(files.some(f=>f.size>25*1024*1024)||total>60*1024*1024)throw new Error('單檔不可超過 25 MB，合計不可超過 60 MB。');status('正在讀取並加密資料…');const added=[];for(const f of files)added.push({id:crypto.randomUUID(),name:f.name,title:f.name,project:$('pdFilter').value||'',description:'',type:f.type,data:b64(new Uint8Array(await f.arrayBuffer()))});state.files.push(...added);selected=added[0].id;$('pdUpload').value='';await persist();redraw()});
+$('pdSave').onclick=()=>operation(async()=>{const f=state.files.find(f=>f.id===selected);if(!f)return;f.title=$('pdTitle').value.trim()||f.name;f.project=$('pdProject').value.trim();f.description=$('pdDescription').value;await persist();redraw()});
+$('pdDelete').onclick=()=>{if(!confirm('確定刪除此資料？更新官網需再次匯出 HTML。'))return;operation(async()=>{state.files=state.files.filter(f=>f.id!==selected);await persist();redraw()})};
+$('pdExport').onclick=()=>operation(async()=>{await persist();const html=template.replace(/(<script id="pdEncrypted" type="application\/json">)[\s\S]*?(<\/script>)/,'$1'+JSON.stringify(envelope)+'$2');const u=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='INC_Website_Proposal_'+new Date().toISOString().slice(0,10)+'.html';a.click();setTimeout(()=>URL.revokeObjectURL(u),30000);status('已匯出完整 HTML（資料已加密）。請改名為 index.html 並取代官網原檔。')});
+});
+})();
+
+</script>
 <script>
 // ── 停用瀏覽器自動還原捲動位置 ──
 if ('scrollRestoration' in history) {
