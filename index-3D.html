@@ -695,16 +695,16 @@
 #proposalPanel button:disabled{opacity:.5;cursor:wait}#proposalPanel .pd-primary{background:#009918;color:white;border-color:#009918}
 #proposalPanel input,#proposalPanel textarea,#proposalPanel select{font:inherit;border:1px solid #ccd8cf;border-radius:6px;padding:10px;max-width:100%;background:white;color:#222}
 #proposalPanel textarea{width:100%;min-height:80px}#proposalPanel .pd-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
-#proposalPanel .pd-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}#proposalPanel .pd-list{display:flex;flex-direction:column;gap:8px}
+#proposalPanel .pd-layout>*{min-width:0;max-width:100%}#proposalPanel .pd-viewer{min-width:0;width:100%;max-width:100%}#proposalPanel .pd-canvas-host{width:100%;max-width:100%;min-width:0;height:460px;position:relative;background:#d8dde1;border-radius:10px;overflow:hidden;touch-action:none}#proposalPanel .pd-canvas-host canvas{display:block;width:100%;height:100%;max-width:100%}#proposalPanel .pd-canvas-host:fullscreen{width:100vw;max-width:none;height:100dvh}#proposalPanel .pd-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}#proposalPanel .pd-list{display:flex;flex-direction:column;gap:8px}
 #proposalPanel .pd-list button{text-align:left;overflow-wrap:anywhere}#proposalPanel .pd-list button[aria-pressed=true]{background:#e0f2e3;border-color:#009918}
 #proposalPanel .pd-note{font-size:13px;color:#56685b}#proposalPanel .pd-status{min-height:24px;white-space:pre-wrap;color:#246032}
 #proposalPanel model-viewer{width:100%;height:520px;background:#29323b;border-radius:10px;touch-action:none}
 #proposalPanel .pd-image{display:block;max-width:100%;max-height:520px;margin:auto}#proposalPanel iframe{width:100%;height:520px;border:1px solid #ccd8cf}
 #proposalPanel .pd-description{white-space:pre-wrap;overflow-wrap:anywhere}#proposalPanel .pd-viewer{min-height:160px}#proposalPanel .pd-empty{padding:36px 12px;text-align:center;color:#65766a}
-@media(max-width:760px){#proposalPanel{padding:16px}#proposalPanel .pd-layout{grid-template-columns:1fr}#proposalPanel model-viewer,#proposalPanel iframe{height:380px}#proposalPanel .pd-list{max-height:200px;overflow:auto}}
+@media(max-width:760px){#proposalPanel .pd-canvas-host{height:380px}#proposalPanel .pd-canvas-host:fullscreen{height:100dvh}#proposalPanel{padding:16px}#proposalPanel .pd-layout{grid-template-columns:minmax(0,1fr)}#proposalPanel model-viewer,#proposalPanel iframe{height:380px}#proposalPanel .pd-list{max-height:200px;overflow:auto}}
 </style>
 <div id="proposalPanel" hidden>
- <button id="pdAdminLogin" type="button">管理員登入</button><form id="pdLogin" hidden><h3>3D模型</h3><p>管理員請輸入密碼以修改資料。<span style="display:block;font-size:12px;color:#66756a">3D模型 v06</span></p><div class="pd-row"><label for="pdRole">身份</label><select id="pdRole"><option value="admin">管理者</option></select><label for="pdPassword">密碼</label><input id="pdPassword" type="password" autocomplete="current-password" required><button class="pd-primary" type="submit">進入</button></div></form>
+ <button id="pdAdminLogin" type="button">管理員登入</button><form id="pdLogin" hidden><h3>3D模型</h3><p>管理員請輸入密碼以修改資料。<span style="display:block;font-size:12px;color:#66756a">3D模型 v07</span></p><div class="pd-row"><label for="pdRole">身份</label><select id="pdRole"><option value="admin">管理者</option></select><label for="pdPassword">密碼</label><input id="pdPassword" type="password" autocomplete="current-password" required><button class="pd-primary" type="submit">進入</button></div></form>
  <div id="pdContent" hidden>
   <div class="pd-row"><h3 style="margin:0;margin-right:auto">3D模型</h3><button id="pdRefresh" type="button">更新清單</button><button id="pdManage" type="button" hidden>資料管理</button><button id="pdLock" type="button">登出管理員</button></div>
   <div id="pdEditor" hidden>
@@ -1219,7 +1219,7 @@ $('pdTitle').value=f.title;$('pdProject').value=f.project||'';$('pdDescription')
 try{const link=await request('/files/'+f.id+'/link',session.token);if(token!==revision)return;const ext=f.name.split('.').pop().toLowerCase(),asset=link.url;$('pdViewer').replaceChildren();
 const renderModel=async()=>{
  if(token!==revision)return;
- const host=document.createElement('div');host.style.cssText='height:460px;position:relative;background:#d8dde1;border-radius:10px;overflow:hidden;touch-action:none';
+ const host=document.createElement('div');host.className='pd-canvas-host';
  const row=document.createElement('div');row.className='pd-row';
  const toggle=document.createElement('input');toggle.type='checkbox';toggle.checked=true;
  const label=document.createElement('label');label.append(toggle,' 黑色描邊');
@@ -1249,7 +1249,7 @@ const renderModel=async()=>{
   if(i%12===0){progress.textContent=`正在產生黑色邊線：${i+1}/${meshes.length} 個零件`;await new Promise(resolve=>setTimeout(resolve,0))}
  }
  const reset=()=>{controls.target.set(0,0,0);const distance=2.8/Math.min(1,camera.aspect);camera.position.set(distance*.65,distance*.5,distance*.9);controls.update()};
- const resize=()=>{const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();for(const m of edgeMaterials)m.resolution.set(w,h)};observer=new ResizeObserver(resize);observer.observe(host);resize();reset();
+ const resize=()=>{const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();for(const m of edgeMaterials)m.resolution.set(w,h)};observer=new ResizeObserver(resize);observer.observe(host);resize();reset();
  toggle.onchange=()=>{for(const o of edgeObjects)o.visible=toggle.checked};light.oninput=()=>renderer.toneMappingExposure=Number(light.value);
  const zoom=k=>{camera.position.sub(controls.target).multiplyScalar(k).add(controls.target);controls.update()};
  $('pdTools').append(button('全螢幕',async()=>{try{await host.requestFullscreen()}catch{status('此瀏覽器不支援全螢幕。')}}),button('重設視角',reset),button('自動旋轉',e=>{controls.autoRotate=!controls.autoRotate;e.target.textContent=controls.autoRotate?'停止旋轉':'自動旋轉'}));
