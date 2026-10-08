@@ -684,40 +684,7 @@
       <button class="video-tab" data-tab="elec"><span class="tab-dot" style="background:#0066cc"></span>電控工程<span class="tab-count">2</span></button>
       <button class="video-tab" data-tab="mech"><span class="tab-dot" style="background:#cc6600"></span>機械工程<span class="tab-count">4</span></button>
       <button class="video-tab active" data-tab="sys"><span class="tab-dot" style="background:#009918"></span>系統整合<span class="tab-count">10</span></button>
-      <button class="video-tab" data-tab="proposal"><span class="tab-dot" style="background:#576c5d"></span>提案討論<span class="tab-count">🔒</span></button>
     </div>
-
-<style id="proposal-style">
-#videoGrid[hidden],#proposalPanel[hidden],#proposalPanel [hidden]{display:none!important}
-#proposalPanel{border:1px solid #dbe5de;border-radius:12px;padding:24px;background:#f8faf8;color:#222;margin-top:24px}
-#proposalPanel h3{font-size:22px;margin:0 0 12px}#proposalPanel p{line-height:1.7;margin:10px 0}
-#proposalPanel button,#proposalPanel .pd-file-button{border:1px solid #c8d7cc;border-radius:7px;background:white;color:#245b32;padding:10px 16px;font:inherit;cursor:pointer;display:inline-block}
-#proposalPanel button:disabled{opacity:.5;cursor:wait}#proposalPanel .pd-primary{background:#009918;color:white;border-color:#009918}
-#proposalPanel input,#proposalPanel textarea,#proposalPanel select{font:inherit;border:1px solid #ccd8cf;border-radius:6px;padding:10px;max-width:100%;background:white;color:#222}
-#proposalPanel textarea{width:100%;min-height:80px}#proposalPanel .pd-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
-#proposalPanel .pd-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px}#proposalPanel .pd-list{display:flex;flex-direction:column;gap:8px}
-#proposalPanel .pd-list button{text-align:left;overflow-wrap:anywhere}#proposalPanel .pd-list button[aria-pressed=true]{background:#e0f2e3;border-color:#009918}
-#proposalPanel .pd-note{font-size:13px;color:#56685b}#proposalPanel .pd-status{min-height:24px;white-space:pre-wrap;color:#246032}
-#proposalPanel model-viewer{width:100%;height:520px;background:#29323b;border-radius:10px;touch-action:none}
-#proposalPanel .pd-image{display:block;max-width:100%;max-height:520px;margin:auto}#proposalPanel iframe{width:100%;height:520px;border:1px solid #ccd8cf}
-#proposalPanel .pd-description{white-space:pre-wrap;overflow-wrap:anywhere}#proposalPanel .pd-viewer{min-height:160px}#proposalPanel .pd-empty{padding:36px 12px;text-align:center;color:#65766a}
-@media(max-width:760px){#proposalPanel{padding:16px}#proposalPanel .pd-layout{grid-template-columns:1fr}#proposalPanel model-viewer,#proposalPanel iframe{height:380px}#proposalPanel .pd-list{max-height:200px;overflow:auto}}
-</style>
-<div id="proposalPanel" hidden>
- <form id="pdLogin"><h3>提案討論</h3><p>此區提供案件開發圖面與討論資料，請輸入密碼。<span style="display:block;font-size:12px;color:#66756a">黑色邊線重製版 v04｜20261007</span></p><div class="pd-row"><label for="pdRole">身份</label><select id="pdRole"><option value="viewer">客戶查看</option><option value="admin">管理者</option></select><label for="pdPassword">密碼</label><input id="pdPassword" type="password" autocomplete="current-password" required><button class="pd-primary" type="submit">進入</button></div></form>
- <div id="pdContent" hidden>
-  <div class="pd-row"><h3 style="margin:0;margin-right:auto">提案討論</h3><button id="pdRefresh" type="button">更新清單</button><button id="pdManage" type="button" hidden>資料管理</button><button id="pdLock" type="button">登出／上鎖</button></div>
-  <div id="pdEditor" hidden>
-   <p class="pd-note">上傳完成或儲存後，資料會自動更新。客戶可按「更新清單」立即讀取，或等待約 30 秒自動更新；不必更換官網 HTML。</p>
-   <div class="pd-row"><label class="pd-file-button">＋ 上傳資料<input id="pdUpload" type="file" multiple hidden></label></div>
-   <p class="pd-note">3D：GLB、STL（STL 無原始組件顏色）；預覽：PNG、JPG、WebP、GIF、PDF；其他檔案提供下載。STEP 請先轉 GLB 或 STL。單檔上限 100 MB，採分段上傳。客戶只可查看，管理者才能修改。所有知道客戶密碼的人都能查看全部案件。</p>
-   <button id="pdCancel" type="button" hidden>取消上傳</button><div id="pdFields" hidden><div class="pd-row"><label for="pdTitle">資料標題</label><input id="pdTitle"><label for="pdProject">案件名稱</label><input id="pdProject"></div><label for="pdDescription">討論說明</label><textarea id="pdDescription"></textarea><div class="pd-row"><button id="pdSave" type="button">儲存說明</button><label class="pd-file-button">替換原始檔<input id="pdReplace" type="file" hidden></label><button id="pdDelete" type="button">刪除此資料</button></div></div>
-  </div>
-  <div class="pd-row"><label for="pdFilter">案件</label><select id="pdFilter"><option value="">全部案件</option></select></div>
-  <div class="pd-layout"><div id="pdList" class="pd-list"></div><div><h3 id="pdHeading"></h3><div id="pdViewer" class="pd-viewer"></div><p id="pdDescriptionView" class="pd-description"></p><div id="pdTools" class="pd-row"></div></div></div>
- </div>
- <p id="pdStatus" class="pd-status" role="status" aria-live="polite"></p>
-</div>
 
     <div class="video-grid" id="videoGrid">
       <!-- 電控工程 -->
@@ -1195,91 +1162,5 @@ if (yearEl) {
 }
 </script>
 
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"}}</script>
-<script id="proposal-cloudflare-code">
-(() => {
-'use strict';
-// Configure after Worker deployment. No account credential belongs in this HTML.
-const API_BASE='https://inc-proposals.incontrolauto001.workers.dev';
-const $=id=>document.getElementById(id);
-let session=null,state={files:[],revision:-1},selected=null,urls=[],revision=0,busy=false,viewerPromise,viewerCleanup,currentRequest=null,canceled=false;
-function status(s){$('pdStatus').textContent=s}
-function release(){revision++;if(viewerCleanup){viewerCleanup();viewerCleanup=null;}$('pdViewer').replaceChildren();for(const u of urls)URL.revokeObjectURL(u);urls=[]}
-function objectURL(blob){const u=URL.createObjectURL(blob);urls.push(u);return u}
-function button(text,fn){const b=document.createElement('button');b.type='button';b.textContent=text;b.onclick=fn;return b}
-async function request(path,token,method='GET',value,binary=false){if(!/^https:\/\/[^/?#]+$/.test(API_BASE))throw new Error('請先設定 Cloudflare 後台網址。');const controller=new AbortController();currentRequest=controller;const timer=setTimeout(()=>controller.abort(),90000);try{const h={};if(token)h.Authorization='Bearer '+token;if(value&&!binary)h['Content-Type']='application/json';const r=await fetch(API_BASE+path,{method,headers:h,body:value===undefined?undefined:binary?value:JSON.stringify(value),signal:controller.signal,referrerPolicy:'no-referrer'});const result=await r.json();if(!r.ok)throw new Error((r.status===401&&path!=='/login'?'SESSION_EXPIRED ':'')+(result.error||'連線失敗'));return result}finally{clearTimeout(timer);if(currentRequest===controller)currentRequest=null}}
-async function upload(token,file,project,target,version){if(!file.size||file.size>100*1024*1024)throw new Error('檔案不可空白，單檔上限 100 MB。');canceled=false;const job=await request('/uploads',token,'POST',{name:file.name,size:file.size,project,target,version});$('pdCancel').hidden=false;try{const count=Math.ceil(file.size/job.chunkSize);for(let part=1;part<=count;part++){if(canceled)throw new Error('已取消上傳。');const chunk=file.slice((part-1)*job.chunkSize,part*job.chunkSize);let done=false;for(let retry=0;retry<3&&!done;retry++){try{await request(`/uploads/${job.id}/parts/${part}`,token,'PUT',chunk,true);done=true}catch(e){if(canceled||e.message.includes('SESSION_EXPIRED')||retry===2)throw e;status(`正在重試第 ${part} 段…`);}}status(`上傳 ${file.name}：${Math.round(part/count*100)}%（${part}/${count} 段）`)}if(canceled)throw new Error('已取消上傳。');status('正在驗證與儲存檔案…');return await request(`/uploads/${job.id}/complete`,token,'POST')}catch(e){try{await request('/uploads/'+job.id,token,'DELETE')}catch{}throw e}finally{$('pdCancel').hidden=true}}
-function rpc(name,...args){switch(name){case'apiLogin':return request('/login',null,'POST',{password:args[0],role:args[1]});case'apiLogout':return request('/logout',args[0],'POST');case'apiList':return request('/files',args[0]).then(x=>({...x,revision:JSON.stringify(x.files.map(f=>[f.id,f.version]))}));case'apiUpload':return upload(args[0],args[1],args[2]);case'apiReplace':return upload(args[0],args[3],'',args[1],args[2]);case'apiUpdate':return request('/files/'+args[1],args[0],'PATCH',{...args[3],version:args[2]});case'apiDelete':return request('/files/'+args[1],args[0],'DELETE',{version:args[2]});default:throw new Error('未知操作。')}}
-async function operation(fn){if(busy)return;busy=true;const controls=[...$('proposalPanel').querySelectorAll('button,input,textarea,select')].filter(c=>c.id!=='pdCancel');controls.forEach(c=>c.disabled=true);try{await fn()}catch(e){if(e.message.includes('SESSION_EXPIRED')){lock();status('登入已逾時，請重新輸入密碼。')}else status('操作失敗：'+e.message)}finally{busy=false;controls.forEach(c=>c.disabled=false)}}
-function lock(){release();session=null;state={files:[],revision:-1};selected=null;$('pdContent').hidden=true;$('pdLogin').hidden=false;$('pdEditor').hidden=true;$('pdFields').hidden=true;$('pdPassword').value='';$('pdList').replaceChildren();$('pdTools').replaceChildren();$('pdHeading').textContent='';$('pdDescriptionView').textContent='';$('pdTitle').value='';$('pdProject').value='';$('pdDescription').value='';$('pdUpload').value='';$('pdReplace').value='';$('pdFilter').replaceChildren(new Option('全部案件',''));status('')}
-function redraw(){const filter=$('pdFilter').value;const projects=[...new Set(state.files.map(f=>f.project||'未分類'))];$('pdFilter').replaceChildren(new Option('全部案件',''),...projects.map(p=>new Option(p,p)));$('pdFilter').value=projects.includes(filter)?filter:'';const visible=state.files.filter(f=>!$('pdFilter').value||(f.project||'未分類')===$('pdFilter').value);if(!visible.some(f=>f.id===selected))selected=visible[0]?.id||null;$('pdList').replaceChildren(...visible.map(f=>{const b=button((f.project||'未分類')+'｜'+f.title,()=>{selected=f.id;redraw()});b.setAttribute('aria-pressed',String(f.id===selected));return b}));show()}
-async function sync(force=false){const token=session?.token;if(!token)return;const previous=state.files.find(f=>f.id===selected);const result=await rpc('apiList',token);if(session?.token!==token)return;const changed=result.revision!==state.revision;state=result;if(force||changed){const current=state.files.find(f=>f.id===selected);if(!force&&previous&&current&&previous.version===current.version){const filter=$('pdFilter').value;const projects=[...new Set(state.files.map(f=>f.project||'未分類'))];$('pdFilter').replaceChildren(new Option('全部案件',''),...projects.map(p=>new Option(p,p)));$('pdFilter').value=projects.includes(filter)?filter:'';const visible=state.files.filter(f=>!$('pdFilter').value||(f.project||'未分類')===$('pdFilter').value);$('pdList').replaceChildren(...visible.map(f=>{const b=button((f.project||'未分類')+'｜'+f.title,()=>{selected=f.id;redraw()});b.setAttribute('aria-pressed',String(f.id===selected));return b}));}else redraw()}}
-async function loadViewer(){if(!viewerPromise)viewerPromise=new Promise((resolve,reject)=>{const s=document.createElement('script');s.type='module';s.src='https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer-module.min.js';s.onload=()=>{const effects=document.createElement('script');effects.type='module';effects.src='https://cdn.jsdelivr.net/npm/@google/model-viewer-effects@1.5.0/dist/model-viewer-effects.min.js';effects.onload=()=>Promise.all(['model-viewer','effect-composer','outline-effect','color-grade-effect'].map(n=>customElements.whenDefined(n))).then(resolve);effects.onerror=()=>{viewerPromise=null;reject(new Error('描邊元件載入失敗，請檢查網路後重試。'))};document.head.append(effects)};s.onerror=()=>{viewerPromise=null;reject(new Error('3D 元件載入失敗，請檢查網路後重新選取資料。'))};document.head.append(s)});return viewerPromise}
-async function toGLB(data){const [T,{STLLoader},{GLTFExporter}]=await Promise.all([import('three'),import('three/addons/loaders/STLLoader.js'),import('three/addons/exporters/GLTFExporter.js')]);const geometry=new STLLoader().parse(data.buffer);geometry.computeVertexNormals();geometry.center();const box=new T.Box3().setFromBufferAttribute(geometry.getAttribute('position'));const size=box.getSize(new T.Vector3());const max=Math.max(size.x,size.y,size.z);if(!Number.isFinite(max)||max<=0){geometry.dispose();throw new Error('STL 沒有有效的立體幾何資料。')}geometry.scale(1/max,1/max,1/max);const material=new T.MeshStandardMaterial({color:0x9cacb5,metalness:.25,roughness:.55,side:T.DoubleSide});const mesh=new T.Mesh(geometry,material);try{return await new GLTFExporter().parseAsync(mesh,{binary:true})}finally{geometry.dispose();material.dispose()}}
-async function show(){release();const token=revision,f=state.files.find(f=>f.id===selected);$('pdTools').replaceChildren();$('pdFields').hidden=!f;$('pdHeading').textContent=f?.title||'';$('pdDescriptionView').textContent=f?.description||'';if(!f){$('pdViewer').textContent=session?.role==='admin'?'尚無資料，請開啟「資料管理」上傳。':'目前尚無討論資料。';return}
-$('pdTitle').value=f.title;$('pdProject').value=f.project||'';$('pdDescription').value=f.description||'';$('pdViewer').textContent='正在取得查看連結…';
-try{const link=await request('/files/'+f.id+'/link',session.token);if(token!==revision)return;const ext=f.name.split('.').pop().toLowerCase(),asset=link.url;$('pdViewer').replaceChildren();
-const renderModel=async()=>{
- if(token!==revision)return;
- const host=document.createElement('div');host.style.cssText='height:460px;position:relative;background:#626b74;border-radius:10px;overflow:hidden;touch-action:none';
- const row=document.createElement('div');row.className='pd-row';
- const toggle=document.createElement('input');toggle.type='checkbox';toggle.checked=true;
- const label=document.createElement('label');label.append(toggle,' 黑色描邊');
- const width=document.createElement('input');width.type='range';width.min='.5';width.max='4';width.step='.25';width.value='1.25';width.setAttribute('aria-label','描邊粗細');
- const wl=document.createElement('label');wl.append('描邊粗細 ',width);
- const background=document.createElement('select');for(const [name,value]of[['中灰','#626b74'],['深灰','#29323b'],['淺灰','#d8dde1']])background.add(new Option(name,value));
- const bl=document.createElement('label');bl.append('背景 ',background);
- const light=document.createElement('input');light.type='range';light.min='.3';light.max='1.6';light.step='.05';light.value='1';const ll=document.createElement('label');ll.append('亮度 ',light);
- row.append(label,wl,bl,ll);const progress=document.createElement('p');progress.className='pd-note';progress.textContent='正在載入 3D 與產生零件黑色邊線…';
- $('pdViewer').replaceChildren(host,row,progress);
- let renderer,controls,observer,root,disposed=false,frame=0;const edgeMaterials=[],edgeObjects=[],ownedMaterials=new Set();
- const cleanup=()=>{if(disposed)return;disposed=true;cancelAnimationFrame(frame);observer?.disconnect();controls?.dispose();root?.traverse(o=>{o.geometry?.dispose();const ms=Array.isArray(o.material)?o.material:[o.material];for(const m of ms)if(m){for(const v of Object.values(m))if(v?.isTexture)v.dispose();m.dispose()}});for(const m of ownedMaterials)m.dispose();renderer?.dispose();renderer?.forceContextLoss()};viewerCleanup=cleanup;
- try{
- const [T,{OrbitControls},{GLTFLoader},{STLLoader},{LineSegments2},{LineSegmentsGeometry},{LineMaterial}]=await Promise.all([import('three'),import('three/addons/controls/OrbitControls.js'),import('three/addons/loaders/GLTFLoader.js'),import('three/addons/loaders/STLLoader.js'),import('three/addons/lines/LineSegments2.js'),import('three/addons/lines/LineSegmentsGeometry.js'),import('three/addons/lines/LineMaterial.js')]);
- if(disposed||token!==revision)return;
- renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.ACESFilmicToneMapping;host.append(renderer.domElement);
- const scene=new T.Scene();scene.background=new T.Color(background.value);const camera=new T.PerspectiveCamera(45,1,.01,100);
- controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.screenSpacePanning=true;
- scene.add(new T.HemisphereLight(0xffffff,0x505b68,2));const key=new T.DirectionalLight(0xffffff,3);key.position.set(3,5,4);scene.add(key);const fill=new T.DirectionalLight(0xffffff,.7);fill.position.set(-4,1,-2);scene.add(fill);
- const response=await fetch(asset,{referrerPolicy:'no-referrer'});if(!response.ok)throw new Error('圖檔讀取失敗，請更新清單重試。');const bytes=await response.arrayBuffer();if(disposed||token!==revision)return;
- root=ext==='stl'?new T.Mesh(new STLLoader().parse(bytes),new T.MeshStandardMaterial({color:0xd6d9dc,roughness:.7,metalness:.05})): (await new GLTFLoader().parseAsync(bytes,asset.slice(0,asset.lastIndexOf('/')+1))).scene;
- if(disposed||token!==revision){root.traverse(o=>{o.geometry?.dispose()});return}
- const box=new T.Box3().setFromObject(root),size=box.getSize(new T.Vector3()),center=box.getCenter(new T.Vector3()),max=Math.max(size.x,size.y,size.z);if(!Number.isFinite(max)||max<=0)throw new Error('模型沒有有效幾何資料。');
- const group=new T.Group();group.add(root);root.position.sub(center);group.scale.setScalar(2/max);scene.add(group);
- const meshes=[];root.traverse(o=>{if(o.isMesh&&o.geometry)meshes.push(o)});let segments=0;
- for(let i=0;i<meshes.length;i++){
-  if(disposed||token!==revision)return;const mesh=meshes[i];const mats=Array.isArray(mesh.material)?mesh.material:[mesh.material];for(const mat of mats){mat.polygonOffset=true;mat.polygonOffsetFactor=1;mat.polygonOffsetUnits=1}
-  const edges=new T.EdgesGeometry(mesh.geometry,25);const positions=edges.getAttribute('position');segments+=positions.count/2;
-  if(positions.count){const geo=new LineSegmentsGeometry().fromEdgesGeometry(edges);const mat=new LineMaterial({color:0x000000,linewidth:Number(width.value),depthTest:true,depthWrite:false});const lines=new LineSegments2(geo,mat);lines.renderOrder=2;mesh.add(lines);edgeMaterials.push(mat);edgeObjects.push(lines)}edges.dispose();
-  if(i%12===0){progress.textContent=`正在產生黑色邊線：${i+1}/${meshes.length} 個零件`;await new Promise(resolve=>setTimeout(resolve,0))}
- }
- const reset=()=>{controls.target.set(0,0,0);const distance=2.8/Math.min(1,camera.aspect);camera.position.set(distance*.65,distance*.5,distance*.9);controls.update()};
- const resize=()=>{const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();for(const m of edgeMaterials)m.resolution.set(w,h)};observer=new ResizeObserver(resize);observer.observe(host);resize();reset();
- toggle.onchange=()=>{for(const o of edgeObjects)o.visible=toggle.checked};width.oninput=()=>{for(const m of edgeMaterials)m.linewidth=Number(width.value)};background.onchange=()=>scene.background.set(background.value);light.oninput=()=>renderer.toneMappingExposure=Number(light.value);
- const zoom=k=>{camera.position.sub(controls.target).multiplyScalar(k).add(controls.target);controls.update()};
- $('pdTools').append(button('放大',()=>zoom(.8)),button('縮小',()=>zoom(1.25)),button('重設視角',reset),button('自動旋轉',e=>{controls.autoRotate=!controls.autoRotate;e.target.textContent=controls.autoRotate?'停止旋轉':'自動旋轉'}),button('全螢幕',async()=>{try{await host.requestFullscreen()}catch{status('此瀏覽器不支援全螢幕。')}}));
- progress.textContent=`已產生 ${Math.round(segments).toLocaleString()} 條黑色邊線。左鍵旋轉、滾輪縮放、右鍵平移；手機單指旋轉、雙指縮放與平移。`;
- const draw=()=>{if(disposed)return;controls.update();renderer.render(scene,camera);frame=requestAnimationFrame(draw)};draw();
- }catch(e){cleanup();if(token===revision){progress.textContent='3D 載入失敗：'+e.message;status(e.message)}}
-};
-if(['glb','stl'].includes(ext)){const mobile=matchMedia('(max-width:760px), (pointer:coarse)').matches;if(mobile&&f.size>20*1024*1024){const p=document.createElement('p');p.className='pd-note';p.textContent=`此模型 ${(f.size/1024/1024).toFixed(1)} MB，載入可能佔用較多手機記憶體。`;const b=button('載入 3D',()=>{b.disabled=true;renderModel()});$('pdViewer').append(p,b)}else await renderModel()}
-else if(['png','jpg','jpeg','webp','gif'].includes(ext)){const img=document.createElement('img');img.src=asset;img.referrerPolicy='no-referrer';img.alt=f.title;img.className='pd-image';$('pdViewer').append(img)}else if(ext==='pdf'){const p=document.createElement('p');p.textContent='請點下方連結開啟 PDF。';const a=document.createElement('a');a.href=asset;a.target='_blank';a.rel='noopener noreferrer';a.textContent='開啟 PDF';$('pdViewer').append(p,a)}else $('pdViewer').textContent='此格式不支援線上預覽。';
-}catch(e){if(token===revision){if(e.message.includes('SESSION_EXPIRED')){lock();status('登入已逾時，請重新登入。')}else{$('pdViewer').textContent='讀取失敗，請更新清單重試。';status(e.message)}}}}
-async function payload(file){if(!file.size||file.size>100*1024*1024)throw new Error('檔案不可空白，單檔上限 100 MB。');return file}
-document.addEventListener('DOMContentLoaded',()=>{
-$('pdCancel').onclick=()=>{canceled=true;currentRequest?.abort();status('正在取消上傳…')};
-$('pdLogin').onsubmit=e=>{e.preventDefault();operation(async()=>{const password=$('pdPassword').value,role=$('pdRole').value;status('登入中…');const result=await rpc('apiLogin',password,role);$('pdPassword').value='';session=result;$('pdLogin').hidden=true;$('pdContent').hidden=false;$('pdManage').hidden=result.role!=='admin';status('已登入。上傳完成後資料會自動更新。');await sync(true)})};
-document.querySelectorAll('.video-tab').forEach(b=>b.addEventListener('click',()=>{const open=b.dataset.tab==='proposal';$('proposalPanel').hidden=!open;$('videoGrid').hidden=open;if(!open){const token=session?.token;lock();if(token)rpc('apiLogout',token).catch(()=>{})}}));
-$('pdManage').onclick=()=>{$('pdEditor').hidden=!$('pdEditor').hidden};$('pdLock').onclick=()=>{const token=session?.token;lock();if(token)rpc('apiLogout',token).catch(()=>{})};$('pdFilter').onchange=redraw;$('pdRefresh').onclick=()=>operation(async()=>{await sync(true);status('清單已更新。')});
-$('pdUpload').onchange=()=>operation(async()=>{const files=[...$('pdUpload').files];if(!files.length)return;const token=session.token;let completed=0;try{for(const file of files){status(`正在上傳 ${completed+1}/${files.length}：${file.name}`);const input=await payload(file);const entry=await rpc('apiUpload',token,input,$('pdFilter').value);selected=entry.id;completed++;}status(`已上傳 ${completed} 個檔案。客戶更新清單即可看到。`)}catch(e){status(`已完成 ${completed}/${files.length} 個檔案；其餘上傳失敗：${e.message}。請重新選擇未完成的檔案。`)}finally{$('pdUpload').value='';await sync(true)}});
-$('pdSave').onclick=()=>operation(async()=>{const f=state.files.find(f=>f.id===selected);if(!f)return;await rpc('apiUpdate',session.token,f.id,f.version,{title:$('pdTitle').value,project:$('pdProject').value,description:$('pdDescription').value});await sync(true);status('說明已儲存，客戶更新清單即可看到。')});
-$('pdReplace').onchange=()=>operation(async()=>{const file=$('pdReplace').files[0],f=state.files.find(f=>f.id===selected);if(!file||!f)return;status('正在替換檔案…');await rpc('apiReplace',session.token,f.id,f.version,await payload(file));$('pdReplace').value='';await sync(true);status('檔案已替換，原有案件名稱與說明保留。')});
-$('pdDelete').onclick=()=>{if(!confirm('確定刪除此資料？刪除會立即同步到客戶清單。'))return;operation(async()=>{const f=state.files.find(f=>f.id===selected);if(!f)return;await rpc('apiDelete',session.token,f.id,f.version);await sync(true);status('資料已刪除。')})};
-// Refresh metadata only while visible; do not disturb unsaved administrator edits.
-setInterval(()=>{if(!session||busy||document.hidden||!$('pdEditor').hidden)return;operation(()=>sync(false))},30000);
-});
-})();
-
-</script>
 </body>
 </html>
