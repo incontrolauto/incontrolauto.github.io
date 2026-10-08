@@ -1,8 +1,0 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IP Address｜InControl</title><link rel="stylesheet" href="../../assets/style.css"><link rel="stylesheet" href="../network.css"></head><body><header class="top"><a class="brand" href="../../"><span>INCONTROL</span><small>Automation Knowledge Base</small></a></header><div class="doc"><aside><a href="../">← 工業通訊</a><hr><a href="../overview/">通訊總覽</a><a href="../osi/">OSI 七層</a><a href="../tcp-ip/">TCP / IP</a><a href="../ip-address/">IP Address</a><a href="../modbus/">Modbus RTU / TCP</a></aside><main><p class="crumb">03 工業通訊</p><h1>IP Address</h1><p class="lead">IP 設定錯誤是現場最常見、也最值得先排除的 Ethernet 通訊問題之一。</p>
-<h2>IPv4 基本概念</h2><div class="flow"><span>IP Address</span><span>Subnet Mask</span><span>Default Gateway</span></div>
-<div class="table"><table><tr><th>設定</th><th>用途</th><th>例</th></tr><tr><td>IP Address</td><td>設備在 IP 網路中的位址</td><td>192.168.1.10</td></tr><tr><td>Subnet Mask</td><td>判斷哪些位址屬於同一子網</td><td>255.255.255.0</td></tr><tr><td>Gateway</td><td>前往其他網段的出口</td><td>192.168.1.1</td></tr></table></div>
-<h2>設備設定範例</h2><pre>PLC       192.168.1.10 / 255.255.255.0
-HMI       192.168.1.20 / 255.255.255.0
-Vision    192.168.1.30 / 255.255.255.0</pre>
-<div class="warn"><b>注意：</b>同一網路中不要配置重複 IP。更換設備時，也要確認舊設備是否仍在線上。</div>
-<h2>現場快速檢查</h2><ol><li>確認 IP 不重複。</li><li>確認雙方 Subnet Mask。</li><li>同網段先 Ping。</li><li>跨網段再檢查 Gateway / Router / VLAN。</li><li>Ping 通但協定不通，再往 TCP Port 與應用層檢查。</li></ol><p class="back"><a href="../">← 回到工業通訊目錄</a></p></main></div></body></html>
